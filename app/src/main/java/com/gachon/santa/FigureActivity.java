@@ -16,6 +16,10 @@ public class FigureActivity extends AppCompatActivity {
 
         Button btnNext = findViewById(R.id.button_next);
         btnNext.setOnClickListener(onClickListener);
+
+        Intent intent = getIntent();
+        String figure = intent.getStringExtra("figure");
+        setFigure(figure);
     }
 
     View.OnClickListener onClickListener = (v) -> {
@@ -23,9 +27,16 @@ public class FigureActivity extends AppCompatActivity {
             case R.id.button_next:
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
-
                 //액티비티 스택 초기화
                 finishAffinity();
         }
     };
+
+    public void setFigure(String figure){
+        switch (figure){
+            case "square":
+                findViewById(R.id.image_square).setVisibility(View.VISIBLE);
+                break;
+        }
+    }
 }

@@ -9,10 +9,20 @@
     <LinearLayout
         android:id="@+id/layout_example"
         android:orientation="vertical"
+        android:gravity="center"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="#ffff1234"/>
+        android:background="#ffff1234">
+
+        <!--이미지가 늘어났을 때 리스트로 동적 할당 필요!!-->
+        <ImageView
+            android:id="@+id/image_square"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/square"
+            android:visibility="gone"/>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_draw_panel"
