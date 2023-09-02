@@ -23,40 +23,20 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FirebaseAuth firebaseAuth;
-    private Button button;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        firebaseAuth = FirebaseAuth.getInstance();
-        ;
-        button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signUp();
-            }
-        });
+
+        Button btnFigure = findViewById(R.id.button_figure);
+        btnFigure.setOnClickListener(onClickListener);
     }
 
-    private void signUp() {
-        String userName = "test@naver.com";
-        String userPassword = "111111";
-        firebaseAuth.createUserWithEmailAndPassword(userName, userPassword)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            finish();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(MainActivity.this, "회원가입 실패",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
+    View.OnClickListener onClickListener = (v) -> {
+        switch (v.getId()){
+            case R.id.button_figure:
+                Intent intent = new Intent(this, FigureExplainActivity.class);
+                startActivity(intent);
+        }
+    };
 }

@@ -1,19 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/button_figure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="선 그리기"
+        android:textSize="50sp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/button_HTP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="K-HTP"
+        android:textSize="50sp"/>
+
+    <Button
+        android:id="@+id/button_LMT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LMT"
+        android:textSize="50sp"/>
+
+    <Button
+        android:id="@+id/button_PITR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PITR"
+        android:textSize="50sp"/>
+
+    <Button
+        android:id="@+id/button_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="카메라"
+        android:textSize="50sp"/>
+
+    <Button
+        android:id="@+id/button_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="알람"
+        android:textSize="50sp"/>
+</LinearLayout>
