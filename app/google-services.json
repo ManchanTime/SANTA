@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "724864241436",
+    "project_id": "santa-80395",
+    "storage_bucket": "santa-80395.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724864241436:android:4d5fa823886bda3b7fb4d9",
+        "android_client_info": {
+          "package_name": "com.gachon.santa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "724864241436-k16s68ar97atqk700q7ah1kktiesgc74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxombw-NGg-yV_DY4in5vOqXjcbjpG4SI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "724864241436-k16s68ar97atqk700q7ah1kktiesgc74.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
