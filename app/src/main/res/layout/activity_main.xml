@@ -48,4 +48,11 @@
         android:layout_height="wrap_content"
         android:text="알람"
         android:textSize="50sp"/>
+
+    <Button
+        android:id="@+id/button_paintBoard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="그림판_테스트"
+        android:textSize="50sp"/>
 </LinearLayout>

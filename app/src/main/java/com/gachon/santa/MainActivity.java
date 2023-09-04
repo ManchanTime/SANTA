@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnFigure = findViewById(R.id.button_figure);
         btnFigure.setOnClickListener(onClickListener);
+
+        Button btnPaintBoard = findViewById(R.id.button_paintBoard);
+        btnPaintBoard.setOnClickListener(onClickListener);
     }
 
     View.OnClickListener onClickListener = (v) -> {
@@ -37,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button_figure:
                 Intent intent = new Intent(this, FigureExplainActivity.class);
                 startActivity(intent);
+            case R.id.button_paintBoard:
+                Intent intent1 = new Intent(this, PaintBoard.class);
+                startActivity(intent1);
         }
     };
 }
