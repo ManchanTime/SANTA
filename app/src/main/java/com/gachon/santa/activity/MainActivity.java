@@ -28,9 +28,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button_figure:
                 Intent intent = new Intent(this, FigureExplainActivity.class);
                 startActivity(intent);
+                break;
             case R.id.button_paintBoard:
                 Intent intent1 = new Intent(this, PaintBoard.class);
                 startActivity(intent1);
+                break;
         }
     };
 }

@@ -47,11 +47,6 @@ public class MyPaintView extends View {
         mCanvas.drawBitmap(bitmap, 0,0, mPaint);
     }
 
-    public void rollback(){
-        mCanvas = new Canvas(previousBitmap);
-        mCanvas.drawBitmap(previousBitmap, 0, 0, mPaint);
-    }
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         int x = (int)event.getX();

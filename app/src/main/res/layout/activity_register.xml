@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".activity.RegisterActivity">
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="253dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="72dp"
+        android:ems="10"
+        android:hint="이름"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/et_pwd"
+        android:layout_width="253dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="비밀번호를 입력"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/et_check"
+        android:layout_width="253dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="비밀번호 확인"
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:id="@+id/et_age"
+        android:layout_width="253dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="나이"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/et_address"
+        android:layout_width="253dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="주소지"
+        android:inputType="textPostalAddress"/>
+
+    <Spinner
+        android:id="@+id/sp_sex"
+        android:layout_width="253dp"
+        android:layout_height="48dp"/>
+
+
+
+    <Button
+        android:id="@+id/btn_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:text="가입완료" />
+
+</LinearLayout>
