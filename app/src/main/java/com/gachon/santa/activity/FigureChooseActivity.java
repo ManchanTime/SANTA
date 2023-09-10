@@ -1,4 +1,4 @@
-package com.gachon.santa;
+package com.gachon.santa.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.gachon.santa.R;
 
 public class FigureChooseActivity extends AppCompatActivity {
 

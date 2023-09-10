@@ -1,5 +1,6 @@
-package com.gachon.santa;
+package com.gachon.santa.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,6 +9,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -19,8 +22,24 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.gachon.santa.R;
+import com.gachon.santa.util.MyPaintView;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
 import org.checkerframework.checker.units.qual.C;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -28,17 +47,34 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class PaintBoard extends AppCompatActivity {
 
     private MyPaintView myView;
-    private Button btnTh, btnClear, btnSave, btnLoad, btnPrevious;
+    private Button btnTh, btnClear, btnSave, btnLoad, btnComplete;
     int thickness = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paint_board);
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        // signInAnonymously를 호출하여 익명 사용자로 로그인
+        auth.signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Toast.makeText(getApplicationContext(), "익명 인증 성공", Toast.LENGTH_LONG).show();
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.e("test", task.getException().toString());
+                    Toast.makeText(getApplicationContext(), "익명 인증 실패", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
         setTitle("간단 그림판");
         myView = new MyPaintView(this);
@@ -51,8 +87,8 @@ public class PaintBoard extends AppCompatActivity {
         btnSave.setOnClickListener(onClickListener);
         btnLoad = findViewById(R.id.btnLoad);
         btnLoad.setOnClickListener(onClickListener);
-        btnPrevious = findViewById(R.id.btnPrevious);
-        btnPrevious.setOnClickListener(onClickListener);
+        btnComplete = findViewById(R.id.btnComplete);
+        btnComplete.setOnClickListener(onClickListener);
 
         ((LinearLayout) findViewById(R.id.paintLayout)).addView(myView);
         ((RadioGroup)findViewById(R.id.radioGroup)).setOnCheckedChangeListener(
@@ -98,8 +134,8 @@ public class PaintBoard extends AppCompatActivity {
             case R.id.btnLoad:
                 loadPicture();
                 break;
-            case R.id.btnPrevious:
-                rollback();
+            case R.id.btnComplete:
+                storeImage();
                 break;
         }
     };
@@ -149,69 +185,23 @@ public class PaintBoard extends AppCompatActivity {
         Toast.makeText(this, "롤백 되었습니다.", Toast.LENGTH_SHORT).show();
     }
 
-    private static class MyPaintView extends View {
-        private Bitmap mBitmap;
-        private Bitmap previousBitmap;
-        private Canvas mCanvas;
-        private Path mPath;
-        private Paint mPaint;
-        public MyPaintView(Context context) {
-            super(context);
-            mPath = new Path();
-            mPaint = new Paint();
-            mPaint.setColor(Color.RED);
-            mPaint.setAntiAlias(true);
-            mPaint.setStrokeWidth(10);
-            mPaint.setStyle(Paint.Style.STROKE);
-        }
-
-        @Override
-        protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-            super.onSizeChanged(w, h, oldw, oldh);
-            mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-            previousBitmap = mBitmap;
-            mCanvas = new Canvas(mBitmap);
-            mCanvas.drawColor(Color.WHITE);
-        }
-
-        @Override
-        protected void onDraw(Canvas canvas) {
-            canvas.drawBitmap(mBitmap, 0, 0, null); //지금까지 그려진 내용
-            canvas.drawPath(mPath, mPaint); //현재 그리고 있는 내용
-        }
-
-        public void draw(Bitmap bitmap){
-            previousBitmap = mBitmap;
-            mBitmap = bitmap;
-            mCanvas = new Canvas(mBitmap);
-            mCanvas.drawBitmap(bitmap, 0,0, mPaint);
-        }
-
-        public void rollback(){
-            mCanvas = new Canvas(previousBitmap);
-            mCanvas.drawBitmap(previousBitmap, 0, 0, mPaint);
-        }
-
-        @Override
-        public boolean onTouchEvent(MotionEvent event) {
-            int x = (int)event.getX();
-            int y = (int)event.getY();
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    mPath.reset();
-                    mPath.moveTo(x, y);
-                    break;
-                case MotionEvent.ACTION_MOVE:
-                    mPath.lineTo(x, y);
-                    break;
-                case MotionEvent.ACTION_UP:
-                    mPath.lineTo(x, y);
-                    mCanvas.drawPath(mPath, mPaint); //mBitmap 에 기록
-                    mPath.reset();
-                    break;
+    public void storeImage(){
+        Uri file = Uri.fromFile(new File(getCacheDir() + "/test.jpg"));
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+        final StorageReference riversRef = storageRef.child("images/"+ file.getLastPathSegment());
+        UploadTask uploadTask = riversRef.putFile(file);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Toast.makeText(PaintBoard.this, "저장 실패", Toast.LENGTH_SHORT).show();
             }
-            this.invalidate();
-            return true;
-        }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(PaintBoard.this, "저장 완료", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 }

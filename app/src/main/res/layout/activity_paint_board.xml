@@ -68,11 +68,11 @@
             android:text="LOAD"/>
 
         <Button
-            android:id="@+id/btnPrevious"
+            android:id="@+id/btnComplete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="ROLLBACK"/>
+            android:text="COMPLETE"/>
     </LinearLayout>
 
     <LinearLayout

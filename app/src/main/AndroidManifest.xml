@@ -18,19 +18,19 @@
         android:theme="@style/Theme.SANTA"
         tools:targetApi="31">
         <activity
-            android:name=".PaintBoard"
+            android:name=".activity.PaintBoard"
             android:exported="false" />
         <activity
-            android:name=".FigureExplainActivity"
+            android:name=".activity.FigureExplainActivity"
             android:exported="false" />
         <activity
-            android:name=".FigureChooseActivity"
+            android:name=".activity.FigureChooseActivity"
             android:exported="false" />
         <activity
-            android:name=".FigureActivity"
+            android:name=".activity.FigureActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

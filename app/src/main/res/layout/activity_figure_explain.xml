@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FigureExplainActivity">
+    tools:context=".activity.FigureExplainActivity">
 
     <TextView
         android:id="@+id/text_name"
