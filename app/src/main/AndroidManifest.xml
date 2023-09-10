@@ -18,6 +18,9 @@
         android:theme="@style/Theme.SANTA"
         tools:targetApi="31">
         <activity
+            android:name=".activity.HtpExplainActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.PaintBoard"
             android:exported="false" />
         <activity
