@@ -39,6 +39,11 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/btnBlue"
                 android:text="BLUE"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnErase"
+                android:text="ERASE"/>
         </RadioGroup>
 
         <Button
@@ -47,6 +52,27 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="CLEAR"/>
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="SAVE"/>
+
+        <Button
+            android:id="@+id/btnLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="LOAD"/>
+
+        <Button
+            android:id="@+id/btnPrevious"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="ROLLBACK"/>
     </LinearLayout>
 
     <LinearLayout
