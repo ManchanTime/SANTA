@@ -15,12 +15,11 @@ import android.widget.Toast;
 
 import com.gachon.santa.R;
 import com.gachon.santa.util.MyPaintView;
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.gachon.santa.util.PaintBoard;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -32,35 +31,28 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class PaintBoard extends AppCompatActivity {
+public class PaintBoardActivity extends AppCompatActivity {
 
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser user;
     private MyPaintView myView;
     private Button btnTh, btnClear, btnSave, btnLoad, btnComplete;
-    int thickness = 0;
+    private int thickness = 0;
+    private PaintBoard testView;
+    private final String type = "test";
+    private final String path = "test";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paint_board);
 
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        // signInAnonymously를 호출하여 익명 사용자로 로그인
-        auth.signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Toast.makeText(getApplicationContext(), "익명 인증 성공", Toast.LENGTH_LONG).show();
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.e("test", task.getException().toString());
-                    Toast.makeText(getApplicationContext(), "익명 인증 실패", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
 
         setTitle("간단 그림판");
         myView = new MyPaintView(this);
+        testView = new PaintBoard(myView, getCacheDir().toString());
 
         btnTh = findViewById(R.id.btnTh);
         btnTh.setOnClickListener(onClickListener);
@@ -99,29 +91,37 @@ public class PaintBoard extends AppCompatActivity {
     View.OnClickListener onClickListener = (v) -> {
         switch (v.getId()){
             case R.id.btnTh:
-                if(thickness % 2 == 1){
-                    btnTh.setText("Thin");
-                    myView.mPaint.setStrokeWidth(10);
-                } else {
-                    btnTh.setText("Thick");
-                    myView.mPaint.setStrokeWidth(20);
-                }
-                thickness++;
+                changePontSize();
                 break;
             case R.id.btnClear:
-                clearPicture();
+                //clearPicture();
+                testView.clearPicture();
                 break;
             case R.id.btnSave:
-                savePicture();
+                //savePicture();
+                testView.savePicture(path);
                 break;
             case R.id.btnLoad:
-                loadPicture();
+                //loadPicture();
+                testView.loadPicture(path);
                 break;
             case R.id.btnComplete:
-                storeImage();
+                testView.storeImage(path, type, user);
+                //storeImage();
                 break;
         }
     };
+
+    private void changePontSize(){
+        if(thickness % 2 == 1){
+            btnTh.setText("Thin");
+            myView.mPaint.setStrokeWidth(10);
+        } else {
+            btnTh.setText("Thick");
+            myView.mPaint.setStrokeWidth(20);
+        }
+        thickness++;
+    }
 
     private void clearPicture(){
         myView.mBitmap.eraseColor(Color.WHITE);
@@ -171,12 +171,12 @@ public class PaintBoard extends AppCompatActivity {
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                Toast.makeText(PaintBoard.this, "저장 실패", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PaintBoardActivity.this, "저장 실패", Toast.LENGTH_SHORT).show();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(PaintBoard.this, "저장 완료", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PaintBoardActivity.this, "저장 완료", Toast.LENGTH_SHORT).show();
             }
         });
     }

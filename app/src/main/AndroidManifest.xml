@@ -28,7 +28,7 @@
             android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.PaintBoard"
+            android:name=".activity.PaintBoardActivity"
             android:exported="false" />
         <activity
             android:name=".activity.FigureExplainActivity"

@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.button_paintBoard:
-                Intent intent1 = new Intent(this, PaintBoard.class);
+                Intent intent1 = new Intent(this, PaintBoardActivity.class);
                 startActivity(intent1);
                 break;
         }
