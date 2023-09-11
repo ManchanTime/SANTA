@@ -22,7 +22,10 @@ public class MainActivity extends AppCompatActivity {
         Button btnHTP = findViewById(R.id.button_htp);
         btnHTP.setOnClickListener(onClickListener);
 
-        Button btnPITR = findViewById(R.id.button_lmt);
+        Button btnLMT = findViewById(R.id.button_lmt);
+        btnLMT.setOnClickListener(onClickListener);
+
+        Button btnPITR = findViewById(R.id.button_pitr);
         btnPITR.setOnClickListener(onClickListener);
 
         Button btnPaintBoard = findViewById(R.id.button_paintBoard);
@@ -46,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.button_lmt:
                 intent = new Intent(this, LmtExampleActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.button_pitr:
+                intent = new Intent(this, PitrExampleActivity.class);
                 startActivity(intent);
                 break;
 

@@ -7,6 +7,15 @@
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="SpeakableTextPresentCheck">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
     <Button
         android:id="@+id/button_figure"
         android:layout_width="wrap_content"
@@ -29,7 +38,7 @@
         android:textSize="50sp"/>
 
     <Button
-        android:id="@+id/button_PITR"
+        android:id="@+id/button_pitr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="PITR"
@@ -55,4 +64,6 @@
         android:layout_height="wrap_content"
         android:text="그림판_테스트"
         android:textSize="50sp"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

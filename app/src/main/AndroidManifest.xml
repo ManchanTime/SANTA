@@ -18,6 +18,12 @@
         android:theme="@style/Theme.SANTA"
         tools:targetApi="31">
         <activity
+            android:name=".activity.PitrChooseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.PitrExampleActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.LmtChooseActivity"
             android:exported="false" />
         <activity

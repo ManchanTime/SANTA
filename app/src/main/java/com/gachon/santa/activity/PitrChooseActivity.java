@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -30,8 +29,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-//그림 선택하기
-public class FigureChooseActivity extends AppCompatActivity {
+public class PitrChooseActivity extends AppCompatActivity {
 
     private MyPaintView myView;
     private Button btnTh, btnClear, btnSave, btnLoad, btnComplete;
@@ -40,13 +38,7 @@ public class FigureChooseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_figure_choose);
-
-        Button btnNext = findViewById(R.id.button_next);
-        btnNext.setOnClickListener(onClickListener);
-
-        ImageView imageFigure = findViewById(R.id.image_square);
-        imageFigure.setOnClickListener(onClickListener);
+        setContentView(R.layout.activity_pitr_choose);
 
         setTitle("간단 그림판");
         myView = new MyPaintView(this);
@@ -87,7 +79,7 @@ public class FigureChooseActivity extends AppCompatActivity {
 
     View.OnClickListener onClickListener = (v) -> {
         Intent intent;
-        switch(v.getId()){
+        switch (v.getId()){
             case R.id.btnTh:
                 if(thickness % 2 == 1){
                     btnTh.setText("Thin");
@@ -106,22 +98,11 @@ public class FigureChooseActivity extends AppCompatActivity {
                 intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 break;
-
             case R.id.btnLoad:
                 loadPicture();
                 break;
             case R.id.btnComplete:
                 storeImage();
-                break;
-
-            case R.id.button_next:
-                intent = new Intent(this, FigureActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.image_square:
-                intent = new Intent(this, FigureActivity.class);
-                intent.putExtra("figure", "square");
-                startActivity(intent);
                 break;
         }
     };
@@ -174,12 +155,12 @@ public class FigureChooseActivity extends AppCompatActivity {
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                Toast.makeText(FigureChooseActivity.this, "저장 실패", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PitrChooseActivity.this, "저장 실패", Toast.LENGTH_SHORT).show();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(FigureChooseActivity.this, "저장 완료", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PitrChooseActivity.this, "저장 완료", Toast.LENGTH_SHORT).show();
             }
         });
     }
