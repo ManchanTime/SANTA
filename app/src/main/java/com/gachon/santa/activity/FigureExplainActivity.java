@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.gachon.santa.R;
 
+//설명칸
 public class FigureExplainActivity extends AppCompatActivity {
 
     @Override

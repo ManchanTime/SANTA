@@ -18,7 +18,13 @@
         android:theme="@style/Theme.SANTA"
         tools:targetApi="31">
         <activity
-            android:name=".activity.HtpExplainActivity"
+            android:name=".activity.LmtChooseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.LmtExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.HtpChooseActivity"
             android:exported="false" />
         <activity
             android:name=".activity.PaintBoard"
@@ -32,6 +38,9 @@
         <activity
             android:name=".activity.FigureActivity"
             android:exported="false" />
+        <activity
+            android:name=".activity.HtpExampleActivity"
+            android:exported="true" />
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">

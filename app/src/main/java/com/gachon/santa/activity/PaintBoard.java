@@ -179,12 +179,6 @@ public class PaintBoard extends AppCompatActivity {
         }
     }
 
-    private void rollback(){
-        clearPicture();
-        myView.rollback();
-        Toast.makeText(this, "롤백 되었습니다.", Toast.LENGTH_SHORT).show();
-    }
-
     public void storeImage(){
         Uri file = Uri.fromFile(new File(getCacheDir() + "/test.jpg"));
         FirebaseStorage storage = FirebaseStorage.getInstance();

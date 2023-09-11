@@ -15,14 +15,14 @@
         android:textSize="50sp"/>
 
     <Button
-        android:id="@+id/button_HTP"
+        android:id="@+id/button_htp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="K-HTP"
         android:textSize="50sp"/>
 
     <Button
-        android:id="@+id/button_LMT"
+        android:id="@+id/button_lmt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LMT"

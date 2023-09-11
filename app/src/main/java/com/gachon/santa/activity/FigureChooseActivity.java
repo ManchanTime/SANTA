@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import com.gachon.santa.R;
 
+//그림 선택하기
 public class FigureChooseActivity extends AppCompatActivity {
 
     @Override

@@ -19,18 +19,41 @@ public class MainActivity extends AppCompatActivity {
         Button btnFigure = findViewById(R.id.button_figure);
         btnFigure.setOnClickListener(onClickListener);
 
+        Button btnHTP = findViewById(R.id.button_htp);
+        btnHTP.setOnClickListener(onClickListener);
+
+        Button btnPITR = findViewById(R.id.button_lmt);
+        btnPITR.setOnClickListener(onClickListener);
+
         Button btnPaintBoard = findViewById(R.id.button_paintBoard);
         btnPaintBoard.setOnClickListener(onClickListener);
+
+
     }
 
     View.OnClickListener onClickListener = (v) -> {
+        Intent intent;
         switch (v.getId()){
             case R.id.button_figure:
-                Intent intent = new Intent(this, FigureExplainActivity.class);
+                intent = new Intent(this, FigureExplainActivity.class);
                 startActivity(intent);
+                break;
+
+            case R.id.button_htp:
+                intent = new Intent(this, HtpExampleActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.button_lmt:
+                intent = new Intent(this, LmtExampleActivity.class);
+                startActivity(intent);
+                break;
+
             case R.id.button_paintBoard:
-                Intent intent1 = new Intent(this, PaintBoard.class);
-                startActivity(intent1);
+                intent = new Intent(this, PaintBoard.class);
+                startActivity(intent);
+                break;
+
         }
     };
 }
