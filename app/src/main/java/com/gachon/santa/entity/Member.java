@@ -9,14 +9,15 @@ public class Member implements Serializable {
     private String age;
     private String sex;
     private String address;
-    private String type = "user";
+    private String type;
 
-    public Member(String uid, String name, String age, String sex, String address) {
+    public Member(String uid, String name, String age, String sex, String address, String type) {
         this.uid = uid;
         this.name = name;
         this.age = age;
         this.sex = sex;
         this.address = address;
+        this.type = type;
     }
 
     public String getUid() {

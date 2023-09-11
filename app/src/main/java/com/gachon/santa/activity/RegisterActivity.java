@@ -89,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             assert user != null;
                             Intent intent = new Intent(getApplicationContext(), IntroActivity.class);
-                            Member member = new Member(user.getUid(), name, age, sex, address);
+                            Member member = new Member(user.getUid(), name, age, sex, address, "user");
                             FirebaseFirestore firestore = FirebaseFirestore.getInstance();
                             firestore.collection("users").document(user.getUid())
                                     .set(member)
@@ -101,7 +101,6 @@ public class RegisterActivity extends AppCompatActivity {
                                             finish();
                                         }
                                     });
-
                         }
                         else{
                             Log.e("error","error");
