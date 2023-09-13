@@ -29,75 +29,10 @@
         android:orientation="vertical"/>
 
 
-    <LinearLayout
+    <include
+        android:id="@+id/paintTool"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#cccccc"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnTh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="Thin"/>
-
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnRed"
-                android:checked="true"
-                android:text="RED"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnGreen"
-                android:text="GREEN"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnBlue"
-                android:text="BLUE"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnErase"
-                android:text="ERASE"/>
-        </RadioGroup>
-
-        <Button
-            android:id="@+id/btnClear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="CLEAR"/>
-
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="SAVE"/>
-
-        <Button
-            android:id="@+id/btnLoad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="LOAD"/>
-
-        <Button
-            android:id="@+id/btnComplete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="COMPLETE"/>
-    </LinearLayout>
+        layout="@layout/activity_paint_board"/>
 
 </LinearLayout>

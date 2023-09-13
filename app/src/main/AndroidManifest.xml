@@ -33,9 +33,6 @@
             android:name=".activity.HtpChooseActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.PaintBoard"
-            android:exported="false" />
-        <activity
             android:name=".activity.FigureExplainActivity"
             android:exported="false" />
         <activity

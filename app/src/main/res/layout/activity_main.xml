@@ -11,59 +11,59 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="SpeakableTextPresentCheck">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button_figure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="선 그리기"
-        android:textSize="50sp"/>
+        <Button
+            android:id="@+id/button_figure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="선 그리기"
+            android:textSize="50sp"/>
 
-    <Button
-        android:id="@+id/button_htp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="K-HTP"
-        android:textSize="50sp"/>
+        <Button
+            android:id="@+id/button_htp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="K-HTP"
+            android:textSize="50sp"/>
 
-    <Button
-        android:id="@+id/button_lmt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LMT"
-        android:textSize="50sp"/>
+        <Button
+            android:id="@+id/button_lmt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LMT"
+            android:textSize="50sp"/>
 
-    <Button
-        android:id="@+id/button_pitr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PITR"
-        android:textSize="50sp"/>
+        <Button
+            android:id="@+id/button_pitr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PITR"
+            android:textSize="50sp"/>
 
-    <Button
-        android:id="@+id/button_picture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="카메라"
-        android:textSize="50sp"/>
+        <Button
+            android:id="@+id/button_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="카메라"
+            android:textSize="50sp"/>
 
-    <Button
-        android:id="@+id/button_notification"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="알람"
-        android:textSize="50sp"/>
+        <Button
+            android:id="@+id/button_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="알람"
+            android:textSize="50sp"/>
 
-    <Button
-        android:id="@+id/button_paintBoard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="그림판_테스트"
-        android:textSize="50sp"/>
+        <Button
+            android:id="@+id/button_paintBoard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="그림판_테스트"
+            android:textSize="50sp"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
