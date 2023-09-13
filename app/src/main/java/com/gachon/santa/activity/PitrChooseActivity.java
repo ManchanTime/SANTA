@@ -103,6 +103,7 @@ public class PitrChooseActivity extends AppCompatActivity {
                 intent = new Intent(PitrChooseActivity.this, MainActivity.class);
                 startActivity(intent);
                 paintBoard.storeImage(path,path, user);
+                finishAffinity();
                 break;
         }
     };

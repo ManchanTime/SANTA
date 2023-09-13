@@ -4,7 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.FigureActivity">
+    tools:context=".activity.FigureActivity"
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:orientation="horizontal">
 
     <LinearLayout
         android:id="@+id/layout_example"
@@ -12,8 +27,7 @@
         android:gravity="center"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="#ffff1234">
+        android:layout_weight="1">
 
         <!--이미지가 늘어났을 때 리스트로 동적 할당 필요!!-->
         <ImageView
@@ -22,22 +36,41 @@
             android:layout_height="300dp"
             android:src="@drawable/square"
             android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/image_triangle"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/triangle"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/image_circle"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/circle"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout_draw_panel"
+        android:id="@+id/paintLayout"
         android:gravity="bottom | end"
         android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="#ff00ff00">
-        <Button
-            android:id="@+id/button_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="저장"
-            android:textSize="50sp"/>
+    </LinearLayout>
     </LinearLayout>
 
+    <include
+        android:id="@+id/paintTool"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/activity_paint_board"/>
+
+
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -56,67 +56,20 @@ public class FigureChooseActivity extends AppCompatActivity {
         Button btnNext = findViewById(R.id.button_next);
         btnNext.setOnClickListener(onClickListener);
 
-        ImageView imageFigure = findViewById(R.id.image_square);
-        imageFigure.setOnClickListener(onClickListener);
+        ImageView figureSquare = findViewById(R.id.image_square);
+        figureSquare.setOnClickListener(onClickListener);
 
-        setTitle("간단 그림판");
-        myView = new MyPaintView(this);
-        paintBoard = new PaintBoard(myView, getCacheDir().toString());
+        ImageView figureTriangle = findViewById(R.id.image_triangle);
+        figureTriangle.setOnClickListener(onClickListener);
 
-        init();
+        ImageView figureCircle = findViewById(R.id.image_circle);
+        figureCircle.setOnClickListener(onClickListener);
 
-        ((LinearLayout) findViewById(R.id.paintLayout)).addView(myView);
-        ((RadioGroup)findViewById(R.id.radioGroup)).setOnCheckedChangeListener(
-                new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                        switch (checkedId) {
-                            case R.id.btnRed:
-                                myView.mPaint.setColor(Color.RED);
-                                break;
-                            case R.id.btnGreen:
-                                myView.mPaint.setColor(Color.GREEN);
-                                break;
-                            case R.id.btnBlue:
-                                myView.mPaint.setColor(Color.BLUE);
-                                break;
-                            case R.id.btnErase:
-                                myView.mPaint.setColor(Color.WHITE);
-                                break;
-                        }
-                    }
-                });
     }
 
     View.OnClickListener onClickListener = (v) -> {
         Intent intent;
         switch(v.getId()){
-            case R.id.btnTh:
-                if(thickness % 2 == 1){
-                    btnTh.setText("Thin");
-                    myView.mPaint.setStrokeWidth(10);
-                } else {
-                    btnTh.setText("Thick");
-                    myView.mPaint.setStrokeWidth(20);
-                }
-                thickness++;
-                break;
-            case R.id.btnClear:
-                paintBoard.clearPicture();
-                break;
-            case R.id.btnSave:
-                paintBoard.savePicture(path);
-                break;
-
-            case R.id.btnLoad:
-                paintBoard.loadPicture(path);
-                break;
-            case R.id.btnComplete:
-                intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                paintBoard.storeImage(path, path, user);
-                break;
-
             case R.id.button_next:
                 intent = new Intent(this, FigureActivity.class);
                 startActivity(intent);
@@ -124,6 +77,18 @@ public class FigureChooseActivity extends AppCompatActivity {
             case R.id.image_square:
                 intent = new Intent(this, FigureActivity.class);
                 intent.putExtra("figure", "square");
+                startActivity(intent);
+                break;
+
+            case R.id.image_triangle:
+                intent = new Intent(this, FigureActivity.class);
+                intent.putExtra("figure", "triangle");
+                startActivity(intent);
+                break;
+
+            case R.id.image_circle:
+                intent = new Intent(this, FigureActivity.class);
+                intent.putExtra("figure", "circle");
                 startActivity(intent);
                 break;
         }
