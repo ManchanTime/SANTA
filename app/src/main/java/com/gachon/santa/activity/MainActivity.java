@@ -7,6 +7,8 @@ import androidx.core.content.FileProvider;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,6 +20,7 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
 import com.gachon.santa.R;
+import com.gachon.santa.dialog.ProgressDialog;
 import com.gachon.santa.entity.PaintInfo;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -40,9 +43,13 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_CAMERA = 0;
+    private static final int REQUEST_GALLERY = 1;
     private RelativeLayout chooseGC, chooseType;
     private String type;
     private Uri uri;
+
+    //골뱅이 돌리기
+    private ProgressDialog customProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +103,10 @@ public class MainActivity extends AppCompatActivity {
                 btnChooseType.setEnabled(true);
             }
         });
+
+        //로딩창 객체 생성
+        customProgressDialog = new ProgressDialog(this);
+        customProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     View.OnClickListener onClickListener = (v) -> {
@@ -116,11 +127,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btn_go_camera:
-                goCamera();
                 chooseGC.setVisibility(View.GONE);
+                goCamera();
                 break;
             case R.id.btn_go_gallery:
                 chooseGC.setVisibility(View.GONE);
+                goGallery();
                 break;
             case R.id.relative_gallery_camera:
                 if(chooseGC.getVisibility() == View.VISIBLE){
@@ -147,11 +159,11 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
-//                case (REQUEST_GALLERY):
-//                    try {
-//                        uri = data.getData();
-//                    } catch (Exception e) {
-//                    }
+                case (REQUEST_GALLERY):
+                    try {
+                        uri = data.getData();
+                    } catch (Exception e) {
+                    }
                 case (REQUEST_CAMERA):
                     try {
                         chooseType.setVisibility(View.VISIBLE);
@@ -163,6 +175,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void storeImage(){
+        //로딩창
+        customProgressDialog.show();
+        //화면터치 방지
+        customProgressDialog.setCanceledOnTouchOutside(false);
+        //뒤로가기 방지
+        customProgressDialog.setCancelable(false);
+
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -188,6 +207,8 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void unused) {
                                     chooseType.setVisibility(View.GONE);
+                                    customProgressDialog.cancel();
+                                    customProgressDialog.dismiss();
                                     Log.e("success", "success");
                                 }
                             });
@@ -196,6 +217,14 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    //갤러리 intent
+    public void goGallery(){
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, REQUEST_GALLERY);
     }
 
     //카메라 intent
