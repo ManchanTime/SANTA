@@ -112,8 +112,8 @@ public class PaintBoardActivity extends AppCompatActivity {
         }
     };
 
-    private void changePontSize(){
-        if(thickness % 2 == 1){
+    private void changePontSize() {
+        if (thickness % 2 == 1) {
             btnTh.setText("Thin");
             myView.mPaint.setStrokeWidth(10);
         } else {
@@ -122,63 +122,4 @@ public class PaintBoardActivity extends AppCompatActivity {
         }
         thickness++;
     }
-
-//    private void clearPicture(){
-//        myView.mBitmap.eraseColor(Color.WHITE);
-//        myView.invalidate();
-//    }
-//
-//    private void loadPicture() {
-//        clearPicture();
-//        Bitmap bitmap = BitmapFactory.decodeFile(getCacheDir() + "/test.jpg").copy(Bitmap.Config.ARGB_8888, true);
-//        myView.draw(bitmap);
-//        Toast.makeText(getApplicationContext(), "로딩 완료", Toast.LENGTH_SHORT).show();
-//    }
-//
-//    private void savePicture() {
-//        myView.setDrawingCacheEnabled(true);    // 캐쉬허용
-//        // 캐쉬에서 가져온 비트맵을 복사해서 새로운 비트맵(스크린샷) 생성
-//        Bitmap image = myView.getDrawingCache();
-//        Log.e("save", image.toString());
-//        File storage = getCacheDir();
-//        File file = new File(storage, "test.jpg");
-//        OutputStream outputStream = null;
-//        try{
-//            file.createNewFile();
-//            outputStream = new FileOutputStream(file);
-//            image.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-//            Toast.makeText(getApplicationContext(), "저장되었습니다.", Toast.LENGTH_SHORT).show();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        finally {
-//            try {
-//                outputStream.close();
-//                myView.setDrawingCacheEnabled(false);
-//            }
-//            catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
-//
-//    public void storeImage(){
-//        Uri file = Uri.fromFile(new File(getCacheDir() + "/test.jpg"));
-//        FirebaseStorage storage = FirebaseStorage.getInstance();
-//        StorageReference storageRef = storage.getReference();
-//        final StorageReference riversRef = storageRef.child("images/"+ file.getLastPathSegment());
-//        UploadTask uploadTask = riversRef.putFile(file);
-//        uploadTask.addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception exception) {
-//                Toast.makeText(PaintBoardActivity.this, "저장 실패", Toast.LENGTH_SHORT).show();
-//            }
-//        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                Toast.makeText(PaintBoardActivity.this, "저장 완료", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-
 }
