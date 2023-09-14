@@ -48,17 +48,26 @@ public class PaintBoard {
         thickness++;
     }
 
+    /**
+     * 그림판 비우기
+     */
     public void clearPicture(){
         myView.mBitmap.eraseColor(Color.WHITE);
         myView.invalidate();
     }
 
+    /**
+     * 이미지를 캐시메모리에 가져오기(DB에는 저장x)
+     */
     public void loadPicture(String path) {
         clearPicture();
         Bitmap bitmap = BitmapFactory.decodeFile(cacheDir + "/" + path + ".jpg").copy(Bitmap.Config.ARGB_8888, true);
         myView.draw(bitmap);
     }
 
+    /**
+     * 이미지를 기기 캐시 메모리에 저장(DB에는 저장x)
+     */
     public void savePicture(String path) {
         myView.setDrawingCacheEnabled(true);    // 캐쉬허용
         // 캐쉬에서 가져온 비트맵을 복사해서 새로운 비트맵(스크린샷) 생성
@@ -85,6 +94,9 @@ public class PaintBoard {
         }
     }
 
+    /**
+     * 이미지를 파이어베이스 storage에 저장
+     */
     public void storeImage(String path, String type, FirebaseUser user){
         savePicture(path);
         Uri file = Uri.fromFile(new File(cacheDir + "/" + path + ".jpg"));

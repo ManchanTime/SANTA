@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         chooseType = findViewById(R.id.relative_type);
         chooseType.setOnClickListener(onClickListener);
 
+        //타입 종류 라디오 버튼
         RadioGroup radioChoose = findViewById(R.id.radio_type);
         radioChoose.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -174,6 +175,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 카메라나 갤러리에서 받아온 uri를 파이어베이스 storage에 저장
+     */
     public void storeImage(){
         //로딩창
         customProgressDialog.show();
