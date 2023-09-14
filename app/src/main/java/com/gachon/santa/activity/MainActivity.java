@@ -48,13 +48,12 @@ public class MainActivity extends AppCompatActivity {
     private String type;
     private Uri uri;
 
-    //골뱅이 돌리기
-    private ProgressDialog customProgressDialog;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         Button btnFigure = findViewById(R.id.button_figure);
         btnFigure.setOnClickListener(onClickListener);
@@ -104,10 +103,6 @@ public class MainActivity extends AppCompatActivity {
                 btnChooseType.setEnabled(true);
             }
         });
-
-        //로딩창 객체 생성
-        customProgressDialog = new ProgressDialog(this);
-        customProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     View.OnClickListener onClickListener = (v) -> {
@@ -179,6 +174,11 @@ public class MainActivity extends AppCompatActivity {
      * 카메라나 갤러리에서 받아온 uri를 파이어베이스 storage에 저장
      */
     public void storeImage(){
+        //골뱅이 돌리기
+        ProgressDialog customProgressDialog;
+        //로딩창 객체 생성
+        customProgressDialog = new ProgressDialog(this);
+        customProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         //로딩창
         customProgressDialog.show();
         //화면터치 방지

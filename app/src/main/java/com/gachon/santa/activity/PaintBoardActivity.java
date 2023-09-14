@@ -1,9 +1,12 @@
 package com.gachon.santa.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +17,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.gachon.santa.R;
+import com.gachon.santa.dialog.ProgressDialog;
 import com.gachon.santa.util.MyPaintView;
 import com.gachon.santa.util.PaintBoard;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -107,6 +111,9 @@ public class PaintBoardActivity extends AppCompatActivity {
                 break;
             case R.id.btnComplete:
                 testView.storeImage(path, type, user);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Toast.makeText(this, "업로드 성공!!", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
                 //storeImage();
                 break;
         }

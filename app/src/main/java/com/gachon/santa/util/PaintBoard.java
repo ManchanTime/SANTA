@@ -5,10 +5,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.gachon.santa.dialog.ProgressDialog;
 import com.gachon.santa.entity.PaintInfo;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,10 +35,14 @@ public class PaintBoard {
     int thickness = 0;
     MyPaintView myView;
     String cacheDir;
+    private ProgressDialog customProgressDialog;
+
 
     public PaintBoard(MyPaintView myView, String cacheDir) {
         this.myView = myView;
         this.cacheDir = cacheDir;
+        customProgressDialog = new ProgressDialog(myView.getContext());
+        customProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     public void changePontSize(){
@@ -98,6 +104,12 @@ public class PaintBoard {
      * 이미지를 파이어베이스 storage에 저장
      */
     public void storeImage(String path, String type, FirebaseUser user){
+        //로딩창
+        customProgressDialog.show();
+        //화면터치 방지
+        customProgressDialog.setCanceledOnTouchOutside(false);
+        //뒤로가기 방지
+        customProgressDialog.setCancelable(false);
         savePicture(path);
         Uri file = Uri.fromFile(new File(cacheDir + "/" + path + ".jpg"));
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -123,6 +135,8 @@ public class PaintBoard {
                                 @Override
                                 public void onSuccess(Void unused) {
                                     Log.e("success", "success");
+                                    customProgressDialog.cancel();
+                                    customProgressDialog.dismiss();
                                 }
                             });
                         }
