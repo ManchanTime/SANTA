@@ -18,19 +18,7 @@
         android:theme="@style/Theme.SANTA"
         tools:targetApi="31">
         <activity
-            android:name=".activity.PitrChooseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.PitrExampleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.LmtChooseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.LmtExampleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.HtpChooseActivity"
+            android:name=".activity.PaintBoard"
             android:exported="false" />
         <activity
             android:name=".activity.FigureExplainActivity"
@@ -41,9 +29,6 @@
         <activity
             android:name=".activity.FigureActivity"
             android:exported="false" />
-        <activity
-            android:name=".activity.HtpExampleActivity"
-            android:exported="true" />
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">
