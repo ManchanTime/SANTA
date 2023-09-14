@@ -14,6 +14,8 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 
 import com.gachon.santa.R;
 import com.gachon.santa.entity.PaintInfo;
@@ -38,6 +40,8 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_CAMERA = 0;
+    private RelativeLayout chooseGC, chooseType;
+    private String type;
     private Uri uri;
 
     @Override
@@ -53,6 +57,45 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnCamera = findViewById(R.id.button_camera);
         btnCamera.setOnClickListener(onClickListener);
+
+        Button btnGoGallery = findViewById(R.id.btn_go_gallery);
+        btnGoGallery.setOnClickListener(onClickListener);
+
+        Button btnGoCamera = findViewById(R.id.btn_go_camera);
+        btnGoCamera.setOnClickListener(onClickListener);
+
+        Button btnChooseType = findViewById(R.id.btn_choose_type);
+        btnChooseType.setOnClickListener(onClickListener);
+
+        //갤러리 or 카메라 선택
+        chooseGC = findViewById(R.id.relative_gallery_camera);
+        chooseGC.setOnClickListener(onClickListener);
+        //업로드 타입(선, PITR 등) 선택
+        chooseType = findViewById(R.id.relative_type);
+        chooseType.setOnClickListener(onClickListener);
+
+        RadioGroup radioChoose = findViewById(R.id.radio_type);
+        radioChoose.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                int radioId = radioChoose.getCheckedRadioButtonId();
+                switch (radioId){
+                    case R.id.radio_figure:
+                        type = "figure";
+                        break;
+                    case R.id.radio_htp:
+                        type = "k_htp";
+                        break;
+                    case R.id.radio_lmt:
+                        type = "lmt";
+                        break;
+                    case R.id.radio_pitr:
+                        type = "pitr";
+                        break;
+                }
+                btnChooseType.setEnabled(true);
+            }
+        });
     }
 
     View.OnClickListener onClickListener = (v) -> {
@@ -67,10 +110,34 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.button_camera:
                 if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                    goCamera();
+                    chooseGC.setVisibility(View.VISIBLE);
                 } else {
                     ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CAMERA}, 1);
                 }
+                break;
+            case R.id.btn_go_camera:
+                goCamera();
+                chooseGC.setVisibility(View.GONE);
+                break;
+            case R.id.btn_go_gallery:
+                chooseGC.setVisibility(View.GONE);
+                break;
+            case R.id.relative_gallery_camera:
+                if(chooseGC.getVisibility() == View.VISIBLE){
+                    chooseGC.setVisibility(View.GONE);
+                }else {
+                    chooseGC.setVisibility(View.VISIBLE);
+                }
+                break;
+            case R.id.relative_type:
+                if(chooseType.getVisibility() == View.VISIBLE){
+                    chooseType.setVisibility(View.GONE);
+                }else{
+                    chooseType.setVisibility(View.VISIBLE);
+                }
+                break;
+            case R.id.btn_choose_type:
+                storeImage();
                 break;
         }
     };
@@ -87,16 +154,15 @@ public class MainActivity extends AppCompatActivity {
 //                    }
                 case (REQUEST_CAMERA):
                     try {
-                        storeImage("cameratest");
+                        chooseType.setVisibility(View.VISIBLE);
                     } catch (Exception e) {
                     }
                     break;
             }
-
         }
     }
 
-    public void storeImage(String type){
+    public void storeImage(){
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -121,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
                             documentReference.set(paint).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
+                                    chooseType.setVisibility(View.GONE);
                                     Log.e("success", "success");
                                 }
                             });
