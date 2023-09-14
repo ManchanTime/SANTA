@@ -4,6 +4,7 @@
       <map>
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/custom_btn.xml" value="0.1205" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/custom_edit_text.xml" value="0.219" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/activity_camera.xml" value="0.20478837109876016" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/activity_figure.xml" value="0.1" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/activity_figure_choose.xml" value="0.10052083333333334" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/activity_figure_explain.xml" value="0.11200000000000002" />
@@ -14,6 +15,8 @@
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/activity_paint_board.xml" value="0.12473958333333333" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/activity_paint_board2.xml" value="0.12473958333333333" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/activity_register.xml" value="0.11744791666666667" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/activity_test.xml" value="0.20478837109876016" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/dialog_process.xml" value="0.20478837109876016" />
       </map>
     </option>
   </component>
