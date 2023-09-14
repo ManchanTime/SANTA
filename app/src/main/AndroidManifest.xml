@@ -18,9 +18,6 @@
         android:theme="@style/Theme.SANTA"
         tools:targetApi="31">
         <activity
-            android:name=".activity.PaintBoard"
-            android:exported="false" />
-        <activity
             android:name=".activity.FigureExplainActivity"
             android:exported="false" />
         <activity
@@ -28,6 +25,33 @@
             android:exported="false" />
         <activity
             android:name=".activity.FigureActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.HtpChooseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.HtpExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.LmtChooseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.LmtExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.PitrChooseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.PitrExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.IntroActivity"
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"

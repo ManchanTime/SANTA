@@ -21,16 +21,49 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnPaintBoard = findViewById(R.id.button_paintBoard);
         btnPaintBoard.setOnClickListener(onClickListener);
+
+        Button btnHTP = findViewById(R.id.button_htp);
+        btnHTP.setOnClickListener(onClickListener);
+
+        Button btnLMT = findViewById(R.id.button_lmt);
+        btnLMT.setOnClickListener(onClickListener);
+
+        Button btnPITR = findViewById(R.id.button_pitr);
+        btnPITR.setOnClickListener(onClickListener);
+
+        Button btnCamera = findViewById(R.id.button_camera);
+        btnCamera.setOnClickListener(onClickListener);
+
+        Button btnNOTICE = findViewById(R.id.button_notification);
+        btnNOTICE.setOnClickListener(onClickListener);
+
+
+
     }
 
     View.OnClickListener onClickListener = (v) -> {
+        Intent intent;
         switch (v.getId()){
             case R.id.button_figure:
-                Intent intent = new Intent(this, FigureExplainActivity.class);
+                intent = new Intent(this, FigureExplainActivity.class);
                 startActivity(intent);
-            case R.id.button_paintBoard:
-                Intent intent1 = new Intent(this, PaintBoard.class);
-                startActivity(intent1);
+                break;
+            case R.id.button_htp:
+                intent = new Intent(this, HtpExampleActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.button_lmt:
+                intent = new Intent(this, LmtExampleActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.button_pitr:
+                intent = new Intent(this, PitrExampleActivity.class);
+                startActivity(intent);
+                break;
+//            case R.id.button_camera:
+//                intent = new Intent(this, .class);
+//                startActivity(intent);
+
         }
     };
 }

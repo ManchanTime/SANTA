@@ -14,7 +14,7 @@ public class HtpExampleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_htp_explain);
+        setContentView(R.layout.activity_htp_example);
 
         Button btnNext = findViewById(R.id.button_next);
         btnNext.setOnClickListener(new View.OnClickListener() {

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.HtpExampleActivity">
+    tools:context=".activity.LmtExampleActivity">
 
     <TextView
         android:id="@+id/text_name"
@@ -20,7 +20,7 @@
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PITR 그리기"
+        android:text="LMT 그리기"
         android:textSize="50sp"/>
 
     <TextView
