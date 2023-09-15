@@ -24,6 +24,39 @@
         android:theme="@style/Theme.SANTA"
         tools:targetApi="31">
         <activity
+            android:name=".activity.PitrExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.PitrChooseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.LmtExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.LmtChooseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.HtpExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.HtpChooseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MyPaintActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.IntroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.PaintBoardActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.FigureExplainActivity"
             android:exported="false" />
         <activity
@@ -33,34 +66,7 @@
             android:name=".activity.FigureActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.HtpChooseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.HtpExampleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.LmtChooseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.LmtExampleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.PitrChooseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.PitrExampleActivity"
-            android:exported="false" />
-        <activity
             android:name=".activity.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.IntroActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -73,7 +79,7 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.gachon.santa.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true" >
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />

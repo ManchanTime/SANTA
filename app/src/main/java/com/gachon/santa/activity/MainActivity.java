@@ -1,44 +1,44 @@
 package com.gachon.santa.activity;
 
-        import androidx.appcompat.app.AppCompatActivity;
-        import androidx.core.app.ActivityCompat;
-        import androidx.core.content.FileProvider;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
 
-        import android.app.Activity;
-        import android.content.Intent;
-        import android.content.pm.PackageManager;
-        import android.graphics.Color;
-        import android.graphics.drawable.ColorDrawable;
-        import android.net.Uri;
-        import android.os.Bundle;
-        import android.os.Environment;
-        import android.provider.MediaStore;
-        import android.util.Log;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.RadioGroup;
-        import android.widget.RelativeLayout;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 
-        import com.gachon.santa.R;
-        import com.gachon.santa.dialog.ProgressDialog;
-        import com.gachon.santa.entity.PaintInfo;
-        import com.google.android.gms.tasks.OnFailureListener;
-        import com.google.android.gms.tasks.OnSuccessListener;
-        import com.google.android.gms.tasks.Task;
-        import com.google.firebase.auth.FirebaseAuth;
-        import com.google.firebase.auth.FirebaseUser;
-        import com.google.firebase.firestore.DocumentReference;
-        import com.google.firebase.firestore.FirebaseFirestore;
-        import com.google.firebase.storage.FirebaseStorage;
-        import com.google.firebase.storage.StorageReference;
-        import com.google.firebase.storage.UploadTask;
+import com.gachon.santa.R;
+import com.gachon.santa.dialog.ProgressDialog;
+import com.gachon.santa.entity.PaintInfo;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
-        import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.NonNull;
 
-        import java.io.File;
-        import java.io.IOException;
-        import java.text.SimpleDateFormat;
-        import java.util.Date;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         Button btnFigure = findViewById(R.id.button_figure);
         btnFigure.setOnClickListener(onClickListener);
@@ -72,9 +71,6 @@ public class MainActivity extends AppCompatActivity {
         Button btnCamera = findViewById(R.id.button_camera);
         btnCamera.setOnClickListener(onClickListener);
 
-        Button btnNOTICE = findViewById(R.id.button_notification);
-        btnNOTICE.setOnClickListener(onClickListener);
-
         Button btnGoGallery = findViewById(R.id.btn_go_gallery);
         btnGoGallery.setOnClickListener(onClickListener);
 
@@ -83,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnChooseType = findViewById(R.id.btn_choose_type);
         btnChooseType.setOnClickListener(onClickListener);
+
+        Button btnMyPaint = findViewById(R.id.button_my_paint);
+        btnMyPaint.setOnClickListener(onClickListener);
 
         //갤러리 or 카메라 선택
         chooseGC = findViewById(R.id.relative_gallery_camera);
@@ -136,8 +135,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.button_paintBoard:
-                Intent intent1 = new Intent(this, PaintBoardActivity.class);
-                startActivity(intent1);
+                intent = new Intent(this, PaintBoardActivity.class);
+                startActivity(intent);
                 break;
             case R.id.button_camera:
                 if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
@@ -145,6 +144,10 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CAMERA}, 1);
                 }
+                break;
+            case R.id.button_my_paint:
+                intent = new Intent(this, MyPaintActivity.class);
+                startActivity(intent);
                 break;
             case R.id.btn_go_camera:
                 chooseGC.setVisibility(View.GONE);

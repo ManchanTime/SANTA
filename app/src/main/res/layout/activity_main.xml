@@ -14,53 +14,60 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <Button
-                android:id="@+id/button_figure"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="선 그리기"
-                android:textSize="50sp"/>
+        <Button
+            android:id="@+id/button_figure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="선 그리기"
+            android:textSize="50sp"/>
+
+        <Button
+            android:id="@+id/button_htp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="K-HTP"
+            android:textSize="50sp"/>
+
+        <Button
+            android:id="@+id/button_lmt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LMT"
+            android:textSize="50sp"/>
+
+        <Button
+            android:id="@+id/button_pitr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PITR"
+            android:textSize="50sp"/>
+
+        <Button
+            android:id="@+id/button_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="카메라"
+            android:textSize="50sp"/>
+
+        <Button
+            android:id="@+id/button_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="알람"
+            android:textSize="50sp"/>
+
+        <Button
+            android:id="@+id/button_paintBoard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="그림판_테스트"
+            android:textSize="50sp"/>
 
             <Button
-                android:id="@+id/button_htp"
+                android:id="@+id/button_my_paint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="K-HTP"
-                android:textSize="50sp"/>
-
-            <Button
-                android:id="@+id/button_lmt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="LMT"
-                android:textSize="50sp"/>
-
-            <Button
-                android:id="@+id/button_pitr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PITR"
-                android:textSize="50sp"/>
-
-            <Button
-                android:id="@+id/button_camera"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="카메라"
-                android:textSize="50sp"/>
-
-            <Button
-                android:id="@+id/button_notification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="알람"
-                android:textSize="50sp"/>
-
-            <Button
-                android:id="@+id/button_paintBoard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="그림판_테스트"
+                android:text="내 그림들"
                 android:textSize="50sp"/>
         </LinearLayout>
     </ScrollView>
@@ -145,7 +152,7 @@
                         android:button="@null"
                         android:drawableRight="@android:drawable/btn_radio"
                         android:text="도형 그리기"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp" />
 
                     <RadioButton
                         android:id="@+id/radio_htp"
@@ -153,7 +160,7 @@
                         android:button="@null"
                         android:drawableRight="@android:drawable/btn_radio"
                         android:text="K-HTP"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp" />
 
                     <RadioButton
                         android:id="@+id/radio_lmt"
@@ -161,7 +168,7 @@
                         android:button="@null"
                         android:drawableRight="@android:drawable/btn_radio"
                         android:text="LMT"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp" />
 
                     <RadioButton
                         android:id="@+id/radio_pitr"
@@ -169,7 +176,7 @@
                         android:button="@null"
                         android:drawableRight="@android:drawable/btn_radio"
                         android:text="PITR"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp" />
                 </RadioGroup>
 
                 <Button

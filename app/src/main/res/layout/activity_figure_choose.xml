@@ -14,30 +14,30 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-    <Button
-        android:id="@+id/button_next"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="다음으로 => 도형 클릭 시 다음 페이지로 넘어가세요"
-        android:textSize="10sp"/>
+            <Button
+                android:id="@+id/button_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="다음으로 => 도형 클릭 시 다음 페이지로 넘어가세요"
+                android:textSize="10sp"/>
 
-    <ImageView
-        android:id="@+id/image_square"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/square"/>
+            <ImageView
+                android:id="@+id/image_square"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/square"/>
 
-    <ImageView
-        android:id="@+id/image_triangle"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/triangle"/>
+            <ImageView
+                android:id="@+id/image_triangle"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/triangle"/>
 
-    <ImageView
-        android:id="@+id/image_circle"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/circle"/>
+            <ImageView
+                android:id="@+id/image_circle"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/circle"/>
 
         </LinearLayout>
     </ScrollView>
