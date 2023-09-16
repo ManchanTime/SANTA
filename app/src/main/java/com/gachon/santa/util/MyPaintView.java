@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -15,6 +16,7 @@ public class MyPaintView extends View {
     public Canvas mCanvas;
     public Path mPath;
     public Paint mPaint;
+
     public MyPaintView(Context context) {
         super(context);
         mPath = new Path();

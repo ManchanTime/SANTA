@@ -5,9 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".activity.FigureActivity">
+    <LinearLayout
+        android:id="@+id/noticeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        tools:ignore="SpeakableTextPresentCheck">
+        <TextView
+            android:id="@+id/notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="FIGURE"
+            android:textSize="50sp"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_container">
+    </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/layout_figure"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -44,10 +64,4 @@
             android:layout_weight="1"
             android:orientation="vertical"/>
     </LinearLayout>
-
-    <include
-        android:id="@+id/paintTool"
-        layout="@layout/paint_board"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 </LinearLayout>

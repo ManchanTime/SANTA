@@ -6,18 +6,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.HtpActivity">
-
-
     <LinearLayout
-        android:id="@+id/paintLayout"
+        android:id="@+id/noticeLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"/>
-
-    <include
-        android:id="@+id/paintTool"
+        android:layout_height="70dp"
+        tools:ignore="SpeakableTextPresentCheck">
+        <TextView
+            android:id="@+id/notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HTP"
+            android:textSize="50sp"/>
+    </LinearLayout>
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/paint_board"/>
+        android:id="@+id/fragment_container">
+
+    </FrameLayout>
 </LinearLayout>

@@ -17,102 +17,88 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="Thin"/>
+            android:text="펜 두께"/>
         <ImageView
             android:id="@+id/btn_red"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
             app:srcCompat="@drawable/color_red"/>
         <ImageView
             android:id="@+id/btn_orange"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
             app:srcCompat="@drawable/color_orange"/>
         <ImageView
             android:id="@+id/btn_yellow"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
             app:srcCompat="@drawable/color_yellow"/>
         <ImageView
             android:id="@+id/btn_green"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
             app:srcCompat="@drawable/color_green"/>
         <ImageView
             android:id="@+id/btn_blue"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
             app:srcCompat="@drawable/color_blue"/>
         <ImageView
             android:id="@+id/btn_navy"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
             app:srcCompat="@drawable/color_navy"/>
         <ImageView
             android:id="@+id/btn_purple"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
             app:srcCompat="@drawable/color_purple"/>
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnRed"
-                android:checked="true"
-                android:text="RED"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnGreen"
-                android:text="GREEN"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnBlue"
-                android:text="BLUE"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnErase"
-                android:text="ERASE"/>
-        </RadioGroup>
-
+        <ImageView
+            android:id="@+id/btn_erase"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/erase" />
         <Button
             android:id="@+id/btnClear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="CLEAR"/>
+            android:text="비우기"/>
 
         <Button
             android:id="@+id/btnSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="SAVE"/>
+            android:text="임시 저장"/>
 
         <Button
             android:id="@+id/btnLoad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="LOAD"/>
+            android:text="이전 이미지"/>
 
         <Button
             android:id="@+id/btnComplete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="COMPLETE"/>
+            android:text="저장"/>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/paintLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    </LinearLayout>
 </LinearLayout>

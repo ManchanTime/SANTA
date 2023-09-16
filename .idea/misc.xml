@@ -4,6 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/btn_orange.xml" value="0.16" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/color_blue.xml" value="0.236" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/color_green.xml" value="0.236" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/color_navy.xml" value="0.236" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/color_orange.xml" value="0.236" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/color_purple.xml" value="0.236" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/color_red.xml" value="0.236" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/color_yellow.xml" value="0.236" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/custom_btn.xml" value="0.1205" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/custom_btn_no.xml" value="0.16" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/custom_btn_yes.xml" value="0.16" />
@@ -36,7 +43,8 @@
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/dialog_confirm.xml" value="0.2039333048311244" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/dialog_process.xml" value="0.20478837109876016" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/dialong.xml" value="0.20478837109876016" />
-        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/paint_board.xml" value="0.20478837109876016" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/fragment_paint_board.xml" value="0.176" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/paint_board.xml" value="0.2" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/mipmap-anydpi-v26/santa_launch.xml" value="0.16" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/mipmap-anydpi-v26/santa_launch_round.xml" value="0.16" />
       </map>

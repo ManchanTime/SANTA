@@ -3,11 +3,13 @@ package com.gachon.santa.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -84,5 +86,31 @@ public class LoginActivity extends BasicFunctions {
                             Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Dialog dialog;
+        dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.dialog_confirm);
+        dialog.show();
+
+        Button btnNo = dialog.findViewById(R.id.btn_no);
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        Button btnYes = dialog.findViewById(R.id.btn_yes);
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                exit();
+            }
+        });
     }
 }

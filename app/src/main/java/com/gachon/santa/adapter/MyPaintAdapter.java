@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.gachon.santa.activity.CommentActivity;
 import com.gachon.santa.activity.MainActivity;
 import com.gachon.santa.entity.PaintInfo;
 
@@ -57,7 +58,7 @@ public class MyPaintAdapter extends BaseAdapter {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, MainActivity.class);
+                Intent intent = new Intent(context, CommentActivity.class);
                 context.startActivity(intent);
             }
         });

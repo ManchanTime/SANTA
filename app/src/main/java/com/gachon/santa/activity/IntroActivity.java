@@ -3,12 +3,17 @@ package com.gachon.santa.activity;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -61,5 +66,31 @@ public class IntroActivity extends BasicFunctions {
             tts = null;
         }
         super.onDestroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Dialog dialog;
+        dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.dialog_confirm);
+        dialog.show();
+
+        Button btnNo = dialog.findViewById(R.id.btn_no);
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        Button btnYes = dialog.findViewById(R.id.btn_yes);
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                exit();
+            }
+        });
     }
 }

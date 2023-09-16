@@ -1,10 +1,11 @@
 package com.gachon.santa.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -15,6 +16,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -57,9 +59,6 @@ public class MainActivity extends BasicFunctions {
         Button btnFigure = findViewById(R.id.button_figure);
         btnFigure.setOnClickListener(onClickListener);
 
-        Button btnPaintBoard = findViewById(R.id.button_paintBoard);
-        btnPaintBoard.setOnClickListener(onClickListener);
-
         Button btnHTP = findViewById(R.id.button_htp);
         btnHTP.setOnClickListener(onClickListener);
 
@@ -94,6 +93,7 @@ public class MainActivity extends BasicFunctions {
         //타입 종류 라디오 버튼
         RadioGroup radioChoose = findViewById(R.id.radio_type);
         radioChoose.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 int radioId = radioChoose.getCheckedRadioButtonId();
@@ -116,6 +116,7 @@ public class MainActivity extends BasicFunctions {
         });
     }
 
+    @SuppressLint("NonConstantResourceId")
     View.OnClickListener onClickListener = (v) -> {
         Intent intent;
         switch (v.getId()){
@@ -133,10 +134,6 @@ public class MainActivity extends BasicFunctions {
                 break;
             case R.id.button_pitr:
                 intent = new Intent(this, PitrExampleActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.button_paintBoard:
-                intent = new Intent(this, PaintBoardActivity.class);
                 startActivity(intent);
                 break;
             case R.id.button_camera:
@@ -187,11 +184,13 @@ public class MainActivity extends BasicFunctions {
                     try {
                         uri = data.getData();
                     } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 case (REQUEST_CAMERA):
                     try {
                         chooseType.setVisibility(View.VISIBLE);
                     } catch (Exception e) {
+                        e.printStackTrace();
                     }
                     break;
             }
@@ -218,6 +217,7 @@ public class MainActivity extends BasicFunctions {
         FirebaseUser user = auth.getCurrentUser();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
+        assert user != null;
         final StorageReference imageRef = storageRef.child("images/"  + user.getUid() + "/" + type + "/" + new Date() + "/" + uri.getLastPathSegment());
         UploadTask uploadTask = imageRef.putFile(uri);
         uploadTask.addOnFailureListener(new OnFailureListener() {
@@ -277,14 +277,44 @@ public class MainActivity extends BasicFunctions {
 
     private File createImageFile() throws IOException {
         // 파일이름을 세팅 및 저장경로 세팅
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        @SuppressLint("SimpleDateFormat") String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
+        return File.createTempFile(
                 imageFileName,
                 ".jpg",
                 storageDir
         );
-        return image;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(chooseGC.getVisibility() == View.VISIBLE){
+            chooseGC.setVisibility(View.INVISIBLE);
+        }
+        else {
+            Dialog dialog;
+            dialog = new Dialog(this);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.setContentView(R.layout.dialog_confirm);
+            dialog.show();
+
+            Button btnNo = dialog.findViewById(R.id.btn_no);
+            btnNo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
+
+            Button btnYes = dialog.findViewById(R.id.btn_yes);
+            btnYes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    exit();
+                }
+            });
+        }
     }
 }

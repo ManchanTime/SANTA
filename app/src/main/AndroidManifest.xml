@@ -24,65 +24,64 @@
         android:theme="@style/Theme.SANTA"
         tools:targetApi="31">
         <activity
-            android:name=".activity.PitrExampleActivity"
-            android:screenOrientation="landscape"
+            android:name=".activity.CommentActivity"
             android:exported="false" />
+        <activity
+            android:name=".activity.PitrExampleActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.PitrActivity"
-            android:screenOrientation="landscape"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.LmtExampleActivity"
-            android:screenOrientation="landscape"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.LmtActivity"
-            android:screenOrientation="landscape"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.HtpExampleActivity"
-            android:screenOrientation="landscape"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.HtpActivity"
-            android:screenOrientation="landscape"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.MyPaintActivity"
-            android:screenOrientation="landscape"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.IntroActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.RegisterActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MainActivity"
-            android:screenOrientation="landscape"
-            android:exported="false" />
-        <activity
-            android:name=".activity.PaintBoardActivity"
-            android:screenOrientation="landscape"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.FigureExplainActivity"
-            android:screenOrientation="landscape"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.FigureChooseActivity"
-            android:screenOrientation="landscape"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.FigureActivity"
-            android:screenOrientation="landscape"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.LoginActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
