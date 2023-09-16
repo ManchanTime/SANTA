@@ -9,6 +9,14 @@
     android:padding="20dp"
     tools:context=".activity.LoginActivity">
 
+    <ImageView
+        android:id="@+id/image_santa"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="70dp"
+        android:src="@drawable/santa_main"/>
+
     <EditText
         android:id="@+id/et_id"
         android:layout_width="match_parent"

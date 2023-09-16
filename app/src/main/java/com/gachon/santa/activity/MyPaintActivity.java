@@ -13,6 +13,7 @@ import com.gachon.santa.R;
 import com.gachon.santa.adapter.MyPaintAdapter;
 import com.gachon.santa.dialog.ProgressDialog;
 import com.gachon.santa.entity.PaintInfo;
+import com.gachon.santa.util.BasicFunctions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,7 +27,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class MyPaintActivity extends AppCompatActivity {
+public class MyPaintActivity extends BasicFunctions {
 
     private ArrayList<PaintInfo> paintList = new ArrayList<>();
     private GridView gridPaint;
@@ -66,9 +67,7 @@ public class MyPaintActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
-                            Log.e("te","Test");
                             for(QueryDocumentSnapshot document : task.getResult()){
-                                Log.e("test", document.getData().get("uid").toString());
                                 paintList.add(new PaintInfo(
                                         document.getData().get("pid").toString(),
                                         document.getData().get("uid").toString(),

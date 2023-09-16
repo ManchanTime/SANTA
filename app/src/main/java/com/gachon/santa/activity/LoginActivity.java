@@ -14,12 +14,13 @@ import android.widget.Toast;
 
 import com.gachon.santa.R;
 import com.gachon.santa.dialog.ProgressDialog;
+import com.gachon.santa.util.BasicFunctions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BasicFunctions {
 
     private EditText etId, etPwd;
     private Button btnLogin, btnRegister;

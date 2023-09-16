@@ -17,56 +17,71 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/santa_launch"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/santa_launch_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SANTA"
         tools:targetApi="31">
         <activity
             android:name=".activity.PitrExampleActivity"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
-            android:name=".activity.PitrChooseActivity"
+            android:name=".activity.PitrActivity"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
             android:name=".activity.LmtExampleActivity"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
-            android:name=".activity.LmtChooseActivity"
+            android:name=".activity.LmtActivity"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
             android:name=".activity.HtpExampleActivity"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
-            android:name=".activity.HtpChooseActivity"
+            android:name=".activity.HtpActivity"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
             android:name=".activity.MyPaintActivity"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
             android:name=".activity.IntroActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activity.RegisterActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
             android:name=".activity.PaintBoardActivity"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
             android:name=".activity.FigureExplainActivity"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
             android:name=".activity.FigureChooseActivity"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
             android:name=".activity.FigureActivity"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

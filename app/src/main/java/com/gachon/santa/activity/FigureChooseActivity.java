@@ -18,6 +18,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.gachon.santa.R;
+import com.gachon.santa.util.BasicFunctions;
 import com.gachon.santa.util.MyPaintView;
 import com.gachon.santa.util.PaintBoard;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,27 +35,14 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 //그림 선택하기
-public class FigureChooseActivity extends AppCompatActivity {
+public class FigureChooseActivity extends BasicFunctions {
 
-    private MyPaintView myView;
-    private PaintBoard paintBoard;
     private Button btnTh, btnClear, btnSave, btnLoad, btnComplete;
-    int thickness = 0;
-
-    private final String path = "figure";
-
-
-    private final FirebaseAuth auth = FirebaseAuth.getInstance();
-    private final FirebaseUser user = auth.getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_figure_choose);
-
-
-        Button btnNext = findViewById(R.id.button_next);
-        btnNext.setOnClickListener(onClickListener);
 
         ImageView figureSquare = findViewById(R.id.image_square);
         figureSquare.setOnClickListener(onClickListener);
@@ -70,10 +58,6 @@ public class FigureChooseActivity extends AppCompatActivity {
     View.OnClickListener onClickListener = (v) -> {
         Intent intent;
         switch(v.getId()){
-            case R.id.button_next:
-                intent = new Intent(this, FigureActivity.class);
-                startActivity(intent);
-                break;
             case R.id.image_square:
                 intent = new Intent(this, FigureActivity.class);
                 intent.putExtra("figure", "square");
@@ -93,17 +77,4 @@ public class FigureChooseActivity extends AppCompatActivity {
                 break;
         }
     };
-
-    private void init(){
-        btnTh = findViewById(R.id.btnTh);
-        btnTh.setOnClickListener(onClickListener);
-        btnClear = findViewById(R.id.btnClear);
-        btnClear.setOnClickListener(onClickListener);
-        btnSave = findViewById(R.id.btnSave);
-        btnSave.setOnClickListener(onClickListener);
-        btnLoad = findViewById(R.id.btnLoad);
-        btnLoad.setOnClickListener(onClickListener);
-        btnComplete = findViewById(R.id.btnComplete);
-        btnComplete.setOnClickListener(onClickListener);
-    }
 }

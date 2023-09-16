@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.LmtChooseActivity">
+    tools:context=".activity.LmtActivity">
 
 
     <LinearLayout
@@ -33,6 +33,6 @@
         android:id="@+id/paintTool"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/activity_paint_board"/>
+        layout="@layout/paint_board"/>
 
 </LinearLayout>

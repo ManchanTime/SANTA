@@ -22,6 +22,7 @@ import android.widget.RelativeLayout;
 import com.gachon.santa.R;
 import com.gachon.santa.dialog.ProgressDialog;
 import com.gachon.santa.entity.PaintInfo;
+import com.gachon.santa.util.BasicFunctions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -40,7 +41,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BasicFunctions {
 
     private static final int REQUEST_CAMERA = 0;
     private static final int REQUEST_GALLERY = 1;
@@ -217,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser user = auth.getCurrentUser();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
-        final StorageReference imageRef = storageRef.child("images/"  + user.getUid() + "/" + type + "/" + uri.getLastPathSegment());
+        final StorageReference imageRef = storageRef.child("images/"  + user.getUid() + "/" + type + "/" + new Date() + "/" + uri.getLastPathSegment());
         UploadTask uploadTask = imageRef.putFile(uri);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override

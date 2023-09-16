@@ -3,13 +3,8 @@ package com.gachon.santa.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -17,25 +12,13 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.gachon.santa.R;
-import com.gachon.santa.dialog.ProgressDialog;
+import com.gachon.santa.util.BasicFunctions;
 import com.gachon.santa.util.MyPaintView;
 import com.gachon.santa.util.PaintBoard;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-
-public class PaintBoardActivity extends AppCompatActivity {
+public class PaintBoardActivity extends BasicFunctions {
 
     private FirebaseAuth firebaseAuth;
     private FirebaseUser user;
@@ -49,7 +32,7 @@ public class PaintBoardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_paint_board);
+        setContentView(R.layout.paint_board);
 
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();

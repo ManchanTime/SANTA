@@ -8,8 +8,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.gachon.santa.R;
+import com.gachon.santa.util.BasicFunctions;
 
-public class HtpExampleActivity extends AppCompatActivity {
+public class HtpExampleActivity extends BasicFunctions {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +21,7 @@ public class HtpExampleActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HtpExampleActivity.this, HtpChooseActivity.class);
+                Intent intent = new Intent(HtpExampleActivity.this, HtpActivity.class);
                 startActivity(intent);
             }
         });

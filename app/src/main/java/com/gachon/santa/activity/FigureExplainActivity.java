@@ -8,9 +8,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.gachon.santa.R;
+import com.gachon.santa.util.BasicFunctions;
 
 //설명칸
-public class FigureExplainActivity extends AppCompatActivity {
+public class FigureExplainActivity extends BasicFunctions {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

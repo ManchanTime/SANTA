@@ -1,6 +1,7 @@
 package com.gachon.santa.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.gachon.santa.activity.MainActivity;
 import com.gachon.santa.entity.PaintInfo;
 
 import java.util.ArrayList;
@@ -48,11 +50,17 @@ public class MyPaintAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ImageView imageView = new ImageView(context);
-        imageView.setLayoutParams(new ViewGroup.LayoutParams(200,300));
+        imageView.setLayoutParams(new ViewGroup.LayoutParams(400,400));
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         imageView.setPadding(5,5,5,5);
-
         Glide.with(context).load(dataset.get(i).getUrl()).into(imageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, MainActivity.class);
+                context.startActivity(intent);
+            }
+        });
         return imageView;
     }
 }

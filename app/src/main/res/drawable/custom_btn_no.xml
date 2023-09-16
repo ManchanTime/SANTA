@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="10dp"
+    android:shape="rectangle" >
+    <!-- 버튼 색깔 -->
+    <solid android:color="#FFFFFF"/>
+    <corners
+        android:bottomLeftRadius="10dp"
+        android:bottomRightRadius="10dp"
+        android:topLeftRadius="10dp"
+        android:topRightRadius="10dp" />
+    <!-- 테두리 색깔 -->
+    <stroke android:width="2dp"
+        android:color="#FF7F00"/>
+</shape>

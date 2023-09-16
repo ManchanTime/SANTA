@@ -10,16 +10,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
+        <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <Button
-                android:id="@+id/button_next"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="다음으로 => 도형 클릭 시 다음 페이지로 넘어가세요"
-                android:textSize="10sp"/>
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="30dp"
+            android:numColumns="3">
 
             <ImageView
                 android:id="@+id/image_square"
@@ -39,6 +35,6 @@
                 android:layout_height="150dp"
                 android:src="@drawable/circle"/>
 
-        </LinearLayout>
+        </GridLayout>
     </ScrollView>
 </LinearLayout>

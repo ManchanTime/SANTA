@@ -4,69 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.FigureActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".activity.FigureActivity">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="600dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/layout_example"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-
-                    <!--이미지가 늘어났을 때 리스트로 동적 할당 필요!!-->
-                    <ImageView
-                        android:id="@+id/image_square"
-                        android:layout_width="300dp"
-                        android:layout_height="300dp"
-                        android:src="@drawable/square"
-                        android:visibility="gone"/>
-
-                    <ImageView
-                        android:id="@+id/image_triangle"
-                        android:layout_width="300dp"
-                        android:layout_height="300dp"
-                        android:src="@drawable/triangle"
-                        android:visibility="gone"/>
-
-                    <ImageView
-                        android:id="@+id/image_circle"
-                        android:layout_width="300dp"
-                        android:layout_height="300dp"
-                        android:src="@drawable/circle"
-                        android:visibility="gone"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/paintLayout"
-                    android:gravity="bottom | end"
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#ff00ff00">
-                </LinearLayout>
-            </LinearLayout>
-
-            <include
-                android:id="@+id/paintTool"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/activity_paint_board"/>
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/image_square"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/square"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/image_circle"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/circle"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/image_triangle"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/triangle"
+                android:visibility="gone"/>
         </LinearLayout>
-    </ScrollView>
+        <LinearLayout
+            android:id="@+id/paintLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"/>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/paintTool"
+        layout="@layout/paint_board"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

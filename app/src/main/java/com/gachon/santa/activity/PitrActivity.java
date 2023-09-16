@@ -1,67 +1,36 @@
 package com.gachon.santa.activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.gachon.santa.R;
+import com.gachon.santa.util.BasicFunctions;
 import com.gachon.santa.util.MyPaintView;
 import com.gachon.santa.util.PaintBoard;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-public class LmtChooseActivity extends AppCompatActivity {
-    int cnt = 0;
-    List<String> list = new ArrayList<>();
-    TextView text;
-
-    private final String path = "lmt";
+public class PitrActivity extends BasicFunctions {
 
     private MyPaintView myView;
     private PaintBoard paintBoard;
     private Button btnTh, btnClear, btnSave, btnLoad, btnComplete;
     int thickness = 0;
-
     private final FirebaseAuth auth = FirebaseAuth.getInstance();
     private final FirebaseUser user = auth.getCurrentUser();
+    private final String path = "pitr";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lmt_choose);
-
-        text = findViewById(R.id.notice);
-        list.add("나무");
-        list.add("산");
-        list.add("바위");
-
-        text.setText(list.get(cnt));
+        setContentView(R.layout.activity_pitr);
 
         setTitle("간단 그림판");
         myView = new MyPaintView(this);
@@ -95,23 +64,6 @@ public class LmtChooseActivity extends AppCompatActivity {
     View.OnClickListener onClickListener = (v) -> {
         Intent intent;
         switch (v.getId()){
-            case R.id.btnComplete:
-                if(btnComplete.getText().equals("저장"))
-                {
-                    intent = new Intent(this, MainActivity.class);
-                    startActivity(intent);
-                    paintBoard.storeImage(path, path, user);
-                    finishAffinity();
-                    break;
-                }
-                cnt++;
-                text.setText(list.get(cnt));
-                if(cnt == list.size()-1)
-                {
-                    btnComplete.setText("저장");
-                    break;
-                }
-                break;
             case R.id.btnTh:
                 if(thickness % 2 == 1){
                     btnTh.setText("Thin");
@@ -131,6 +83,11 @@ public class LmtChooseActivity extends AppCompatActivity {
             case R.id.btnLoad:
                 paintBoard.loadPicture(path);
                 break;
+            case R.id.btnComplete:
+                paintBoard.storeImage(path,path, user);
+                intent = new Intent(PitrActivity.this, MainActivity.class);
+                startActivity(intent);
+                break;
         }
     };
 
@@ -144,8 +101,6 @@ public class LmtChooseActivity extends AppCompatActivity {
         btnLoad = findViewById(R.id.btnLoad);
         btnLoad.setOnClickListener(onClickListener);
         btnComplete = findViewById(R.id.btnComplete);
-        btnComplete.setText("다음으로");
         btnComplete.setOnClickListener(onClickListener);
     }
-
 }

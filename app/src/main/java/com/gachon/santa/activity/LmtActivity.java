@@ -1,57 +1,52 @@
 package com.gachon.santa.activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
-import android.widget.Toast;
+import android.widget.TextView;
+
 import com.gachon.santa.R;
+import com.gachon.santa.util.BasicFunctions;
 import com.gachon.santa.util.MyPaintView;
 import com.gachon.santa.util.PaintBoard;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 
-public class HtpChooseActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class LmtActivity extends BasicFunctions {
+    int cnt = 0;
+    List<String> list = new ArrayList<>();
+    TextView text;
+
+    private final String path = "lmt";
 
     private MyPaintView myView;
     private PaintBoard paintBoard;
     private Button btnTh, btnClear, btnSave, btnLoad, btnComplete;
     int thickness = 0;
 
-    private final String path = "htp";
-
-
-
     private final FirebaseAuth auth = FirebaseAuth.getInstance();
     private final FirebaseUser user = auth.getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_htp_choose);
+        setContentView(R.layout.activity_lmt);
+
+        text = findViewById(R.id.notice);
+        list.add("나무");
+        list.add("산");
+        list.add("바위");
+
+        text.setText(list.get(cnt));
 
         setTitle("간단 그림판");
         myView = new MyPaintView(this);
@@ -85,6 +80,22 @@ public class HtpChooseActivity extends AppCompatActivity {
     View.OnClickListener onClickListener = (v) -> {
         Intent intent;
         switch (v.getId()){
+            case R.id.btnComplete:
+                if(btnComplete.getText().equals("저장"))
+                {
+                    paintBoard.storeImage(path, path, user);
+                    intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+                    break;
+                }
+                cnt++;
+                text.setText(list.get(cnt));
+                if(cnt == list.size()-1)
+                {
+                    btnComplete.setText("저장");
+                    break;
+                }
+                break;
             case R.id.btnTh:
                 if(thickness % 2 == 1){
                     btnTh.setText("Thin");
@@ -100,17 +111,9 @@ public class HtpChooseActivity extends AppCompatActivity {
                 break;
             case R.id.btnSave:
                 paintBoard.savePicture(path);
-
                 break;
             case R.id.btnLoad:
                 paintBoard.loadPicture(path);
-                break;
-            case R.id.btnComplete:
-                intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                assert user != null;
-                paintBoard.storeImage(path, path, user);
-                finishAffinity();
                 break;
         }
     };
@@ -125,6 +128,7 @@ public class HtpChooseActivity extends AppCompatActivity {
         btnLoad = findViewById(R.id.btnLoad);
         btnLoad.setOnClickListener(onClickListener);
         btnComplete = findViewById(R.id.btnComplete);
+        btnComplete.setText("다음으로");
         btnComplete.setOnClickListener(onClickListener);
     }
 

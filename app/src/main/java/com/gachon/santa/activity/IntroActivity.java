@@ -13,10 +13,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.gachon.santa.R;
+import com.gachon.santa.util.BasicFunctions;
 
 import java.util.Locale;
 
-public class IntroActivity extends AppCompatActivity {
+public class IntroActivity extends BasicFunctions {
 
     private TextToSpeech tts;
     private Button btnNext;

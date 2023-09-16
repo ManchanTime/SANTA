@@ -5,18 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
 import com.gachon.santa.R;
+import com.gachon.santa.util.BasicFunctions;
 import com.gachon.santa.util.MyPaintView;
 import com.gachon.santa.util.PaintBoard;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class FigureActivity extends AppCompatActivity {
+public class FigureActivity extends BasicFunctions {
 
 
     private MyPaintView myView;
@@ -90,10 +92,9 @@ public class FigureActivity extends AppCompatActivity {
                 paintBoard.loadPicture(path);
                 break;
             case R.id.btnComplete:
+                paintBoard.storeImage(path, path, user);
                 intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
-                paintBoard.storeImage(path, path, user);
-                finishAffinity();
                 break;
         }
     };

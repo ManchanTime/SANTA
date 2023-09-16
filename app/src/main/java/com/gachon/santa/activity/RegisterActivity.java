@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.gachon.santa.R;
 import com.gachon.santa.entity.Member;
+import com.gachon.santa.util.BasicFunctions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -24,7 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends BasicFunctions {
 
     TextView etName, etPwd, etPwdCh, etAge, etAddress;
     Spinner spSex;

@@ -1,5 +1,6 @@
 package com.gachon.santa.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -91,17 +92,30 @@ public class PaintBoard {
     }
 
     public void storeImage(String path, String type, FirebaseUser user){
+        //골뱅이 돌리기
+        ProgressDialog customProgressDialog;
+        //로딩창 객체 생성
+        customProgressDialog = new ProgressDialog(myView.getContext());
         savePicture(path);
+
+        customProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        //로딩창
+        customProgressDialog.show();
+        //화면터치 방지
+        customProgressDialog.setCanceledOnTouchOutside(false);
+        //뒤로가기 방지
+        customProgressDialog.setCancelable(false);
         Uri file = Uri.fromFile(new File(cacheDir + "/" + path + ".jpg"));
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
-        final StorageReference imageRef = storageRef.child("images/"  + user.getUid() + "/" + type + "/" + file.getLastPathSegment());
+        Log.e("road",file.getLastPathSegment());
+        final StorageReference imageRef = storageRef.child("images/"  + user.getUid() + "/" + type + "/" + new Date() + "/" + file.getLastPathSegment());
         UploadTask uploadTask = imageRef.putFile(file);
+
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 Log.e("check", "fail");
-                //Toast.makeText(com.gachon.santa.activity.PaintBoardActivity.this, "저장 실패", Toast.LENGTH_SHORT).show();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -116,6 +130,9 @@ public class PaintBoard {
                             documentReference.set(paint).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
+                                    customProgressDialog.cancel();
+                                    customProgressDialog.dismiss();
+                                    ((Activity)myView.getContext()).finishAffinity();
                                     Log.e("success", "success");
                                 }
                             });
