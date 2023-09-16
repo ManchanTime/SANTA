@@ -108,6 +108,7 @@ public class HtpChooseActivity extends AppCompatActivity {
             case R.id.btnComplete:
                 intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
+                assert user != null;
                 paintBoard.storeImage(path, path, user);
                 finishAffinity();
                 break;

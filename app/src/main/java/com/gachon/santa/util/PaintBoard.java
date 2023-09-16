@@ -4,13 +4,21 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
+import com.gachon.santa.dialog.ProgressDialog;
+import com.gachon.santa.entity.PaintInfo;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -21,6 +29,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Date;
 
 public class PaintBoard {
 
@@ -86,17 +95,33 @@ public class PaintBoard {
         Uri file = Uri.fromFile(new File(cacheDir + "/" + path + ".jpg"));
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
-        final StorageReference riversRef = storageRef.child("images/"  + user.getUid() + "/" + type + "/" + file.getLastPathSegment());
-        UploadTask uploadTask = riversRef.putFile(file);
+        final StorageReference imageRef = storageRef.child("images/"  + user.getUid() + "/" + type + "/" + file.getLastPathSegment());
+        UploadTask uploadTask = imageRef.putFile(file);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
+                Log.e("check", "fail");
                 //Toast.makeText(com.gachon.santa.activity.PaintBoardActivity.this, "저장 실패", Toast.LENGTH_SHORT).show();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                //Toast.makeText(com.gachon.santa.activity.PaintBoardActivity.this, "저장 완료", Toast.LENGTH_SHORT).show();
+                Task<Uri> downloadUrl = imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        if (uri != null) {
+                            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+                            DocumentReference documentReference = firestore.collection("paints").document();
+                            PaintInfo paint = new PaintInfo(documentReference.getId(), user.getUid(), uri.toString(), type, new Date());
+                            documentReference.set(paint).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Log.e("success", "success");
+                                }
+                            });
+                        }
+                    }
+                });
             }
         });
     }
