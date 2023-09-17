@@ -108,7 +108,6 @@ public class PaintBoardFragment extends Fragment {
     }
 
     View.OnClickListener onClickListener = (v) -> {
-        Intent intent;
         switch (v.getId()){
             case R.id.btnTh:
                 if(thickness % 2 == 1){
@@ -130,16 +129,18 @@ public class PaintBoardFragment extends Fragment {
                 paintBoard.loadPicture(path);
                 break;
             case R.id.btnComplete:
-                if(list.size() != 0) {
+                if(btnComplete.getText().equals("저장")){
+                    assert user != null;
+                    paintBoard.storeImage(path, path, user);
+                }
+                else{
                     count++;
                     paintBoard.savePicture(path);
-                    btnComplete.setText("다음");
-                    notice.setText(list.get(count));
-                    if (count == list.size() - 1) {
+                    if(count < list.size())
+                        notice.setText(list.get(count));
+                    if(count == list.size()-1) {
                         btnComplete.setText("저장");
                     }
-                }else if(list.size() == count){
-                    paintBoard.storeImage(path, path, user);
                 }
                 break;
             case R.id.btn_red:
@@ -171,6 +172,7 @@ public class PaintBoardFragment extends Fragment {
                 btnErase.setImageResource(R.drawable.erase);
                 break;
             case R.id.btn_erase:
+                myView.mPaint.setStrokeWidth(50);
                 myView.mPaint.setColor(Color.WHITE);
                 btnErase.setImageResource(R.drawable.erase_click);
                 break;

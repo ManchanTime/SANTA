@@ -9,9 +9,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
+import com.bumptech.glide.Glide;
 import com.gachon.santa.R;
 import com.gachon.santa.fragment.PaintBoardFragment;
 import com.gachon.santa.util.BasicFunctions;

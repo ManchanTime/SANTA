@@ -6,31 +6,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.PitrActivity">
-    <LinearLayout
+
+    <RelativeLayout
         android:id="@+id/noticeLayout"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal"
+        android:padding="5dp"
         tools:ignore="SpeakableTextPresentCheck">
+
         <TextView
             android:id="@+id/notice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="start"
             android:text="PITR"
-            android:textSize="50sp"/>
+            android:textSize="50sp" />
+    </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/btn_example"
-            android:layout_gravity="end"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            tools:src="@drawable/pitr_example"/>
-    </LinearLayout>
     <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/noticeLayout"
-        android:id="@+id/fragment_container">
-    </FrameLayout>
+        android:layout_below="@id/noticeLayout"/>
 
 </RelativeLayout>

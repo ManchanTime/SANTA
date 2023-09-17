@@ -7,7 +7,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.Spinner;
 
 import com.gachon.santa.R;
 import com.gachon.santa.adapter.MyPaintAdapter;
@@ -34,6 +38,9 @@ public class MyPaintActivity extends BasicFunctions {
     private MyPaintAdapter myPaintAdapter;
     //골뱅이 돌리기
     private ProgressDialog customProgressDialog;
+    private Spinner filter;
+    private String choose;
+    private String[] items = {"전체", "figure", "htp", "lmt", "pitr"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +50,25 @@ public class MyPaintActivity extends BasicFunctions {
         //로딩창 객체 생성
         customProgressDialog = new ProgressDialog(this);
         customProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        loadPaints();
+
+        //스피너 필터링
+        filter = findViewById(R.id.sp_filter);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, items
+        );
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        filter.setAdapter(adapter);
+        filter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                choose = items[i];
+                loadPaints();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
+
+
     }
 
     public void loadPaints(){
@@ -53,39 +78,72 @@ public class MyPaintActivity extends BasicFunctions {
         customProgressDialog.setCanceledOnTouchOutside(false);
         //뒤로가기 방지
         customProgressDialog.setCancelable(false);
+        paintList.clear();
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         CollectionReference collectionReference = firestore.collection("paints");
         assert user != null;
-        Log.e("userId", user.getUid());
-        collectionReference
-                .whereEqualTo("uid", user.getUid())
-                .orderBy("date", Query.Direction.DESCENDING)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            for(QueryDocumentSnapshot document : task.getResult()){
-                                paintList.add(new PaintInfo(
-                                        document.getData().get("pid").toString(),
-                                        document.getData().get("uid").toString(),
-                                        document.getData().get("url").toString(),
-                                        document.getData().get("type").toString(),
-                                        new Date(document.getDate("date").getTime())
-                                    )
-                                );
+        if(choose.equals("전체")){
+            collectionReference
+                    .whereEqualTo("uid", user.getUid())
+                    .orderBy("date", Query.Direction.DESCENDING)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful()){
+                                for(QueryDocumentSnapshot document : task.getResult()){
+                                    paintList.add(new PaintInfo(
+                                                    document.getData().get("pid").toString(),
+                                                    document.getData().get("uid").toString(),
+                                                    document.getData().get("url").toString(),
+                                                    document.getData().get("type").toString(),
+                                                    new Date(document.getDate("date").getTime())
+                                            )
+                                    );
+                                }
+                                gridPaint = findViewById(R.id.grid_paint);
+                                myPaintAdapter = new MyPaintAdapter(MyPaintActivity.this, paintList);
+                                gridPaint.setAdapter(myPaintAdapter);
+                                customProgressDialog.cancel();
+                                customProgressDialog.dismiss();
+                            }else{
+                                Log.e("te",task.getException().toString());
                             }
-                            gridPaint = findViewById(R.id.grid_paint);
-                            myPaintAdapter = new MyPaintAdapter(MyPaintActivity.this, paintList);
-                            gridPaint.setAdapter(myPaintAdapter);
-                            customProgressDialog.cancel();
-                            customProgressDialog.dismiss();
-                        }else{
-                            Log.e("te",task.getException().toString());
                         }
-                    }
-                });
+                    });
+        }
+        else{
+            collectionReference
+                    .whereEqualTo("uid", user.getUid())
+                    .whereEqualTo("type", choose)
+                    .orderBy("date", Query.Direction.DESCENDING)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful()){
+                                for(QueryDocumentSnapshot document : task.getResult()){
+                                    paintList.add(new PaintInfo(
+                                                    document.getData().get("pid").toString(),
+                                                    document.getData().get("uid").toString(),
+                                                    document.getData().get("url").toString(),
+                                                    document.getData().get("type").toString(),
+                                                    new Date(document.getDate("date").getTime())
+                                            )
+                                    );
+                                }
+                                gridPaint = findViewById(R.id.grid_paint);
+                                myPaintAdapter = new MyPaintAdapter(MyPaintActivity.this, paintList);
+                                gridPaint.setAdapter(myPaintAdapter);
+                                customProgressDialog.cancel();
+                                customProgressDialog.dismiss();
+                            }else{
+                                Log.e("te",task.getException().toString());
+                            }
+                        }
+                    });
+        }
     }
 }
