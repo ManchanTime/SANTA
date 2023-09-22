@@ -59,4 +59,12 @@ public class Member implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

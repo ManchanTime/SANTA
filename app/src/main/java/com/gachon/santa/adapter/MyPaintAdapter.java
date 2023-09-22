@@ -9,8 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+
 import com.gachon.santa.activity.CommentActivity;
-import com.gachon.santa.activity.MainActivity;
 import com.gachon.santa.entity.PaintInfo;
 
 import java.util.ArrayList;
@@ -22,7 +22,6 @@ public class MyPaintAdapter extends BaseAdapter {
     public MyPaintAdapter(Context c, ArrayList<PaintInfo> dataset){
         context = c;
         this.dataset = dataset;
-        Log.e("test", dataset.size()+"");
     }
 
     // BaseAdapter를 상속받은 클래스가 구현해야 할 함수들은
@@ -49,16 +48,18 @@ public class MyPaintAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(int position, View view, ViewGroup viewGroup) {
         ImageView imageView = new ImageView(context);
         imageView.setLayoutParams(new ViewGroup.LayoutParams(400,400));
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         imageView.setPadding(5,5,5,5);
-        Glide.with(context).load(dataset.get(i).getUrl()).into(imageView);
+        Glide.with(context).load(dataset.get(position).getUrl()).into(imageView);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String paintId = dataset.get(position).getPid();
                 Intent intent = new Intent(context, CommentActivity.class);
+                intent.putExtra("paintId", paintId);
                 context.startActivity(intent);
             }
         });

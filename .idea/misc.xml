@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/border.xml" value="0.2135" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/btn_orange.xml" value="0.16" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/color_blue.xml" value="0.236" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/color_green.xml" value="0.236" />
@@ -15,9 +16,12 @@
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/custom_btn_no.xml" value="0.16" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/custom_btn_yes.xml" value="0.16" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/custom_edit_text.xml" value="0.219" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/dialog_background.xml" value="0.2135" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/drawable/view_round_white.xml" value="0.16" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout-w1240dp/item_notification.xml" value="0.20478837109876016" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/activity_alarm.xml" value="0.20478837109876016" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/activity_camera.xml" value="0.20478837109876016" />
-        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/activity_comment.xml" value="0.20478837109876016" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/activity_comment.xml" value="0.264" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/activity_figure.xml" value="0.144" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/activity_figure_choose.xml" value="0.2" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/activity_figure_explain.xml" value="0.11200000000000002" />
@@ -45,13 +49,15 @@
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/dialog_process.xml" value="0.20478837109876016" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/dialong.xml" value="0.20478837109876016" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/fragment_paint_board.xml" value="0.176" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/item_comment.xml" value="0.536" />
+        <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/item_notification.xml" value="0.20478837109876016" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/layout/paint_board.xml" value="0.2" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/mipmap-anydpi-v26/santa_launch.xml" value="0.16" />
         <entry key="..\:/Users/lych0/AndroidStudioProjects/SANTA/app/src/main/res/mipmap-anydpi-v26/santa_launch_round.xml" value="0.16" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17_PREVIEW" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

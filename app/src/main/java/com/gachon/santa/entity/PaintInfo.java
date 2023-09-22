@@ -8,13 +8,15 @@ public class PaintInfo {
     String uid;
     String url;
     String type;
+    Boolean read;
     Date date;
 
-    public PaintInfo(String pid, String uid, String url, String type, Date date) {
+    public PaintInfo(String pid, String uid, String url, String type, Boolean read, Date date) {
         this.pid = pid;
         this.uid = uid;
         this.url = url;
         this.type = type;
+        this.read = read;
         this.date = date;
     }
 
@@ -48,6 +50,14 @@ public class PaintInfo {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Boolean getRead() {
+        return read;
+    }
+
+    public void setRead(Boolean read) {
+        this.read = read;
     }
 
     public Date getDate() {

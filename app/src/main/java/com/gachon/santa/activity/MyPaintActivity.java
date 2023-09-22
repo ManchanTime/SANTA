@@ -99,6 +99,7 @@ public class MyPaintActivity extends BasicFunctions {
                                                     document.getData().get("uid").toString(),
                                                     document.getData().get("url").toString(),
                                                     document.getData().get("type").toString(),
+                                                    (Boolean) document.getData().get("read"),
                                                     new Date(document.getDate("date").getTime())
                                             )
                                     );
@@ -130,6 +131,7 @@ public class MyPaintActivity extends BasicFunctions {
                                                     document.getData().get("uid").toString(),
                                                     document.getData().get("url").toString(),
                                                     document.getData().get("type").toString(),
+                                                    (Boolean) document.getData().get("read"),
                                                     new Date(document.getDate("date").getTime())
                                             )
                                     );

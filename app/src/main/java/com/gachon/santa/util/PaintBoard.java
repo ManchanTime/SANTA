@@ -117,7 +117,7 @@ public class PaintBoard {
                         if (uri != null) {
                             FirebaseFirestore firestore = FirebaseFirestore.getInstance();
                             DocumentReference documentReference = firestore.collection("paints").document();
-                            PaintInfo paint = new PaintInfo(documentReference.getId(), user.getUid(), uri.toString(), type, new Date());
+                            PaintInfo paint = new PaintInfo(documentReference.getId(), user.getUid(), uri.toString(), type, false, new Date());
                             documentReference.set(paint).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {

@@ -87,7 +87,8 @@ public class RegisterActivity extends BasicFunctions {
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             assert user != null;
                             Intent intent = new Intent(getApplicationContext(), IntroActivity.class);
-                            Member member = new Member(user.getUid(), name, age, sex, address, "user");
+                            String type = "user";
+                            Member member = new Member(user.getUid(), name, age, sex, address, type);
                             FirebaseFirestore firestore = FirebaseFirestore.getInstance();
                             firestore.collection("users").document(user.getUid())
                                     .set(member)
