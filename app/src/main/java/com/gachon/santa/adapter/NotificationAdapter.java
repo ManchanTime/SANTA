@@ -67,13 +67,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             @Override
             public void onClick(View view) {
                 String id = mDataset.get(position).getCid();
-                String paintId = mDataset.get(position).getPid();
                 DocumentReference documentReference = firestore.collection("comments").document(id);
                 documentReference.update("read", true);
-                removeItem(position);
+                String pid = mDataset.get(position).getPid();
                 Intent intent = new Intent(activity, CommentActivity.class);
-                intent.putExtra("paintId", paintId);
+                intent.putExtra("postId", pid);
                 activity.startActivity(intent);
+                mDataset.remove(position);
             }
         });
         TextView textContent = relativeLayout.findViewById(R.id.text_content);

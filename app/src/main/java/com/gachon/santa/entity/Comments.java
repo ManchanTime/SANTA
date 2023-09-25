@@ -3,18 +3,26 @@ package com.gachon.santa.entity;
 import java.util.Date;
 
 public class Comments {
+    private String cid;
     private String pid;
     private String publisherId;
     private String content;
-    private String url;
     private Date createdAt;
 
-    public Comments(String pid, String publisherId, String content, String url, Date createdAt) {
+    public Comments(String cid, String pid, String publisherId, String content, Date createdAt) {
+        this.cid = cid;
         this.pid = pid;
         this.publisherId = publisherId;
         this.content = content;
-        this.url = url;
         this.createdAt = createdAt;
+    }
+
+    public String getCid() {
+        return cid;
+    }
+
+    public void setCid(String cid) {
+        this.cid = cid;
     }
 
     public String getPid() {
@@ -39,14 +47,6 @@ public class Comments {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     public Date getCreatedAt() {

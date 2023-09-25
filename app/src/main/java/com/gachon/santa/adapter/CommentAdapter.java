@@ -67,6 +67,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
         TextView textContent = relativeLayout.findViewById(R.id.text_content);
         TextView textTime = relativeLayout.findViewById(R.id.text_time);
 
+        documentReference = firestore.collection("comments").document(mDataset.get(position).getCid());
+        documentReference.update("read", true);
         documentReference = firestore.collection("users").document(mDataset.get(position).getPublisherId());
         documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override

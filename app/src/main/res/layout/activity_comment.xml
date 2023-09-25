@@ -16,10 +16,10 @@
 
         <ImageView
             android:id="@+id/image_paint"
+            android:padding="50dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
-            android:src="@drawable/santa_good" />
+            tools:src="@drawable/santa_good" />
     </androidx.cardview.widget.CardView>
 
     <ScrollView

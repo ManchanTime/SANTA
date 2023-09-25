@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -58,7 +59,7 @@ public class CommentActivity extends AppCompatActivity {
         Intent getIntent = getIntent();
         if(getIntent != null) {
             imagePaint = findViewById(R.id.image_paint);
-            paintId = getIntent.getStringExtra("paintId");
+            paintId = getIntent.getStringExtra("postId");
             recyclerView = findViewById(R.id.recycler);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -78,36 +79,48 @@ public class CommentActivity extends AppCompatActivity {
         //뒤로가기 방지
         customProgressDialog.setCancelable(false);
         firestore = FirebaseFirestore.getInstance();
-        collectionReference = firestore.collection("comments");
-        collectionReference
-                .whereEqualTo("pid", paintId)
-                .orderBy("createdAt", Query.Direction.DESCENDING)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            for(QueryDocumentSnapshot document : task.getResult()){
-                                commentList.add(new Comments(
-                                                document.getData().get("pid").toString(),
-                                                document.getData().get("uid").toString(),
-                                                document.getData().get("content").toString(),
-                                                document.getData().get("url").toString(),
-                                                new Date(document.getDate("createdAt").getTime())
-                                        )
-                                );
-                            }
-                            Log.e("size",commentList.size()+"");
-                            Glide.with(getApplicationContext()).load(commentList.get(0).getUrl()).into(imagePaint);
-                            recyclerView.setAdapter(commentAdapter);
-                        }
-                        else{
-                            Log.e("error", task.getException().toString());
-                        }
-                        customProgressDialog.cancel();
-                        customProgressDialog.dismiss();
-                    }
-                });
+        DocumentReference documentReference = firestore.collection("paints").document(paintId);
+        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    String url = task.getResult().getData().get("url").toString();
+                    Glide.with(getApplicationContext()).load(url).into(imagePaint);
+                    collectionReference = firestore.collection("comments");
+                    collectionReference
+                            .whereEqualTo("postId", paintId)
+                            .orderBy("createdAt", Query.Direction.DESCENDING)
+                            .get()
+                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if(task.isSuccessful()){
+                                        for(QueryDocumentSnapshot document : task.getResult()){
+                                            commentList.add(
+                                                    new Comments(
+                                                            document.getData().get("cid").toString(),
+                                                            document.getData().get("publisher").toString(),
+                                                            document.getData().get("target").toString(),
+                                                            document.getData().get("content").toString(),
+                                                            new Date(document.getDate("createdAt").getTime())
+                                                    )
+                                            );
+                                        }
+                                        recyclerView.setAdapter(commentAdapter);
+                                    }
+                                    else{
+                                        Log.e("error", task.getException().toString());
+                                    }
+                                    customProgressDialog.cancel();
+                                    customProgressDialog.dismiss();
+                                }
+                            });
+                }
+                else{
+                    Log.e(getApplicationContext().toString(), task.getException().toString());
+                }
+            }
+        });
     }
 
 }

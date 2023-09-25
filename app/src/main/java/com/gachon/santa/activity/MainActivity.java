@@ -300,9 +300,9 @@ public class MainActivity extends BasicFunctions {
                         boolean read = (boolean) comments.get("read");
                         if (!read) {
                             String commentId = comments.get("cid").toString();
-                            String publisherId = comments.get("uid").toString();
+                            String publisherId = comments.get("publisher").toString();
                             String targetId = comments.get("target").toString();
-                            String postId = comments.get("pid").toString();
+                            String postId = comments.get("postId").toString();
                             Date time = new Date(snapshot.getDate("createdAt").getTime());
                             if (targetId.equals(user.getUid())) {
                                 count++;
