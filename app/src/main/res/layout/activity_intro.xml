@@ -12,18 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">
+
         <ImageView
             android:id="@+id/image_santa"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/santa_main"/>
+            android:src="@drawable/santa_main" />
 
         <ImageView
             android:id="@+id/image_logo"
             android:layout_width="200dp"
             android:layout_height="100dp"
-            android:layout_toRightOf="@id/image_santa"
             android:layout_alignBottom="@id/image_santa"
+            android:layout_toRightOf="@id/image_santa"
             android:src="@drawable/santa_logo" />
     </RelativeLayout>
 

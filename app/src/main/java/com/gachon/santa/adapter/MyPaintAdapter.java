@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+import com.gachon.santa.R;
 import com.gachon.santa.activity.CommentActivity;
 import com.gachon.santa.entity.PaintInfo;
 
@@ -53,7 +54,14 @@ public class MyPaintAdapter extends BaseAdapter {
         imageView.setLayoutParams(new ViewGroup.LayoutParams(400,400));
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         imageView.setPadding(5,5,5,5);
+        if(dataset.get(position).getRead()){
+            imageView.setBackgroundResource(R.drawable.border_read);
+        }
+        else {
+            imageView.setBackgroundResource(R.drawable.border_not_read);
+        }
         Glide.with(context).load(dataset.get(position).getUrl()).into(imageView);
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -104,5 +104,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
     public void removeItem(int position){
         mDataset.remove(position);
         notifyItemRemoved(position);
+        notifyDataSetChanged();
     }
 }

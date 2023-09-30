@@ -65,6 +65,7 @@ public class MainActivity extends BasicFunctions {
     private String type;
     private Uri uri;
     private final ArrayList<NotificationInfo> notificationData = new ArrayList<>();
+    private Button btnNotification;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +99,7 @@ public class MainActivity extends BasicFunctions {
         Button btnMyPaint = findViewById(R.id.button_my_paint);
         btnMyPaint.setOnClickListener(onClickListener);
 
-        Button btnNotification = findViewById(R.id.button_notification);
+        btnNotification = findViewById(R.id.button_notification);
         btnNotification.setOnClickListener(onClickListener);
 
         //갤러리 or 카메라 선택
@@ -311,10 +312,9 @@ public class MainActivity extends BasicFunctions {
                         }
                     }
                 }
-//                if(count != 0){
-//                    textCount.setText(count+"");
-//                    textCount.setVisibility(View.VISIBLE);
-//                }else textCount.setVisibility(View.GONE);
+                if(count != 0){
+                    btnNotification.setBackgroundResource(R.drawable.border_not_read);
+                }else btnNotification.setBackgroundResource(R.drawable.border_read);
             }
         });
     }

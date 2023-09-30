@@ -73,7 +73,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                 Intent intent = new Intent(activity, CommentActivity.class);
                 intent.putExtra("postId", pid);
                 activity.startActivity(intent);
-                mDataset.remove(position);
+                removeItem(position);
             }
         });
         TextView textContent = relativeLayout.findViewById(R.id.text_content);
@@ -115,5 +115,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public void removeItem(int position){
         mDataset.remove(position);
         notifyItemRemoved(position);
+        notifyDataSetChanged();
     }
 }

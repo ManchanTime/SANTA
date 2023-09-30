@@ -34,7 +34,8 @@
                 android:layout_columnWeight="1"
                 android:gravity="center"
                 android:text="선 그리기"
-                android:textSize="50sp" />
+                android:textSize="50sp"
+                android:background="@drawable/border_read"/>
 
             <Button
                 android:id="@+id/button_htp"
@@ -43,7 +44,8 @@
                 android:layout_columnWeight="1"
                 android:gravity="center"
                 android:text="K-HTP"
-                android:textSize="50sp" />
+                android:textSize="50sp"
+                android:background="@drawable/border_read"/>
 
             <Button
                 android:id="@+id/button_lmt"
@@ -52,7 +54,8 @@
                 android:layout_columnWeight="1"
                 android:gravity="center"
                 android:text="LMT"
-                android:textSize="50sp" />
+                android:textSize="50sp"
+                android:background="@drawable/border_read"/>
 
             <Button
                 android:id="@+id/button_pitr"
@@ -61,7 +64,8 @@
                 android:layout_columnWeight="1"
                 android:gravity="center"
                 android:text="PITR"
-                android:textSize="50sp" />
+                android:textSize="50sp"
+                android:background="@drawable/border_read"/>
 
             <Button
                 android:id="@+id/button_camera"
@@ -70,7 +74,8 @@
                 android:layout_columnWeight="1"
                 android:gravity="center"
                 android:text="카메라"
-                android:textSize="50sp" />
+                android:textSize="50sp"
+                android:background="@drawable/border_read"/>
 
             <Button
                 android:id="@+id/button_notification"
@@ -79,7 +84,8 @@
                 android:layout_columnWeight="1"
                 android:gravity="center"
                 android:text="알람"
-                android:textSize="50sp" />
+                android:textSize="50sp"
+                android:background="@drawable/border_read"/>
 
             <Button
                 android:id="@+id/button_my_paint"
@@ -88,7 +94,8 @@
                 android:layout_columnWeight="1"
                 android:gravity="center"
                 android:text="내 그림들"
-                android:textSize="50sp" />
+                android:textSize="50sp"
+                android:background="@drawable/border_read"/>
         </GridLayout>
     </ScrollView>
 
