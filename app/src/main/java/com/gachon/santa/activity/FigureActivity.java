@@ -41,6 +41,8 @@ public class FigureActivity extends BasicFunctions {
         String figure = intent.getStringExtra("figure");
         setFigure(figure);
 
+        TextView notice = findViewById(R.id.notice);
+        notice.setText(figure);
         myView = new MyPaintView(getApplicationContext());
         paintBoard = new PaintBoard(myView, getCacheDir().toString());
         paintBoardFragment = new PaintBoardFragment(getCacheDir().toString(), path);

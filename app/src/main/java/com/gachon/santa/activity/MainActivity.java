@@ -21,7 +21,6 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -67,7 +66,6 @@ public class MainActivity extends BasicFunctions {
     private Uri uri;
     private final ArrayList<NotificationInfo> notificationData = new ArrayList<>();
     private Button btnNotification;
-    private ImageView imgRead;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,9 +108,6 @@ public class MainActivity extends BasicFunctions {
         //업로드 타입(선, PITR 등) 선택
         chooseType = findViewById(R.id.relative_type);
         chooseType.setOnClickListener(onClickListener);
-
-        //새로운 알림이 있다면 보임 아니면 안 보임
-        imgRead = findViewById(R.id.image_read);
 
         //타입 종류 라디오 버튼
         RadioGroup radioChoose = findViewById(R.id.radio_type);
@@ -318,8 +313,8 @@ public class MainActivity extends BasicFunctions {
                     }
                 }
                 if(count != 0){
-                    imgRead.setVisibility(View.VISIBLE);
-                }else imgRead.setVisibility(View.GONE);
+                    btnNotification.setBackgroundResource(R.drawable.border_not_read);
+                }else btnNotification.setBackgroundResource(R.drawable.border_read);
             }
         });
     }

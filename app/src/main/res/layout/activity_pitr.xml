@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/noticeLayout"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:padding="5dp"
         tools:ignore="SpeakableTextPresentCheck">
@@ -21,7 +21,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:text="PITR"
-            android:textColor="@color/black"
             android:textSize="50sp" />
     </RelativeLayout>
 

@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.gachon.santa.R;
@@ -27,7 +26,6 @@ public class PitrActivity extends BasicFunctions {
 
     private final FirebaseAuth auth = FirebaseAuth.getInstance();
     private final String path = "pitr";
-    private TextView textNotice;
     private Fragment paintBoardFragment;
 
     @Override
@@ -39,8 +37,5 @@ public class PitrActivity extends BasicFunctions {
         paintBoardFragment = new PaintBoardFragment(getCacheDir().toString(), path);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().add(R.id.fragment_container,paintBoardFragment).commit();
-
-        textNotice = findViewById(R.id.notice);
-        textNotice.setText("빗속에 서있는 사람을 그려주세요");
     }
 }

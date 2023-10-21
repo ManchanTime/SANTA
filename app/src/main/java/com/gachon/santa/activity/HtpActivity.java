@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import com.gachon.santa.R;
 import com.gachon.santa.fragment.PaintBoardFragment;
@@ -26,7 +25,6 @@ public class HtpActivity extends BasicFunctions {
     private MyPaintView myView;
     private PaintBoard paintBoard;
     private final String path = "htp";
-    private TextView textNotice;
     private Fragment paintBoardFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +38,5 @@ public class HtpActivity extends BasicFunctions {
         paintBoardFragment = new PaintBoardFragment(getCacheDir().toString(), path);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().add(R.id.fragment_container,paintBoardFragment).commit();
-        textNotice = findViewById(R.id.notice);
-        textNotice.setText("집, 나무, 사람을 자유롭게 그려주세요.");
     }
 }

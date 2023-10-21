@@ -80,7 +80,7 @@ public class PaintBoardFragment extends Fragment {
         btnComplete.setOnClickListener(onClickListener);
         if((TextView) getActivity().findViewById(R.id.notice) != null && list.size() != 0){
             notice = (TextView) getActivity().findViewById(R.id.notice);
-            notice.setText(list.get(count) + "을 그려주세요");
+            notice.setText(list.get(count));
         }
         if(list.size() != 0){
             btnComplete.setText("다음");
@@ -137,7 +137,7 @@ public class PaintBoardFragment extends Fragment {
                     count++;
                     paintBoard.savePicture(path);
                     if(count < list.size())
-                        notice.setText(list.get(count) + "을 그려주세요.");
+                        notice.setText(list.get(count));
                     if(count == list.size()-1) {
                         btnComplete.setText("저장");
                     }

@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -22,10 +21,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends BasicFunctions {
 
@@ -74,47 +69,21 @@ public class LoginActivity extends BasicFunctions {
         customProgressDialog.setCanceledOnTouchOutside(false);
         //뒤로가기 방지
         customProgressDialog.setCancelable(false);
-
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();//데이터베이스의 인스턴스를 가져온다. (즉, root를 가져온다.)
-
-        firebaseAuth.signInWithEmailAndPassword(email, pwd)//메일이랑 패스워드를 참조
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.signInWithEmailAndPassword(email, pwd)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        customProgressDialog.cancel();
+                        customProgressDialog.dismiss();
                         if(task.isSuccessful()){
-                            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
-                            assert user != null;
-                            DocumentReference documentReference = firestore.collection("users")
-                                    .document(user.getUid());
-                            documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                @Override
-                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                    customProgressDialog.cancel();
-                                    customProgressDialog.dismiss();
-                                    if(task.isSuccessful()){
-                                        String type = task.getResult().getData().get("type").toString();
-                                        if(type.equals("user")){
-                                            Intent intent = new Intent(LoginActivity.this, IntroActivity.class);
-                                            startActivity(intent);
-                                            Toast.makeText(LoginActivity.this, "환영합니다!!", Toast.LENGTH_SHORT).show();
-                                            finish();
-                                        }
-                                        else{
-                                            Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                    else{
-                                        Log.e("error", task.getException().toString());
-                                    }
-                                }
-                            });
+                            Intent intent = new Intent(LoginActivity.this, IntroActivity.class);
+                            startActivity(intent);
+                            Toast.makeText(LoginActivity.this, "환영합니다!!", Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                         else
                             Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
-                        customProgressDialog.cancel();
-                        customProgressDialog.dismiss();
                     }
                 });
     }
