@@ -71,7 +71,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                 documentReference.update("read", true);
                 String pid = mDataset.get(position).getPid();
                 Intent intent = new Intent(activity, CommentActivity.class);
-                intent.putExtra("postId", pid);
+                intent.putExtra("paintId", pid);
                 activity.startActivity(intent);
                 removeItem(position);
             }

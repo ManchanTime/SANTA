@@ -52,10 +52,10 @@
             android:id="@+id/btn_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="다음"
-            android:background="@drawable/custom_btn"
             android:layout_alignBottom="@+id/image_album"
             android:layout_centerInParent="true"
+            android:background="@drawable/custom_btn"
+            android:text="다음"
             android:textColor="@color/black"
             android:textSize="15sp" />
 

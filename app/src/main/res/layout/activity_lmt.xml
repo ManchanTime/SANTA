@@ -15,7 +15,8 @@
             android:id="@+id/notice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="강"
+            android:textColor="@color/black"
+            tools:text="강을 그려주세요."
             android:textSize="50sp"/>
     </LinearLayout>
     <FrameLayout

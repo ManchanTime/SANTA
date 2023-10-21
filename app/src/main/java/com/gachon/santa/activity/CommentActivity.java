@@ -11,7 +11,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -47,6 +49,13 @@ public class CommentActivity extends AppCompatActivity {
     private CommentAdapter commentAdapter;
     private RecyclerView recyclerView;
     private String paintId;
+    private RelativeLayout layoutNoSearch;
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        loadComment();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +68,18 @@ public class CommentActivity extends AppCompatActivity {
         Intent getIntent = getIntent();
         if(getIntent != null) {
             imagePaint = findViewById(R.id.image_paint);
-            paintId = getIntent.getStringExtra("postId");
+            paintId = getIntent.getStringExtra("paintId");
             recyclerView = findViewById(R.id.recycler);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setItemViewCacheSize(100);
             commentAdapter = new CommentAdapter(this, commentList);
             commentAdapter.setHasStableIds(true);
-            loadComment();
+            layoutNoSearch = findViewById(R.id.layout_no_search);
+            //loadComment();
+        }
+        else{
+            Log.e("Error", "No intent");
         }
     }
 
@@ -106,6 +119,10 @@ public class CommentActivity extends AppCompatActivity {
                                                     )
                                             );
                                         }
+                                        if(commentList.isEmpty()){
+                                            layoutNoSearch.setVisibility(View.VISIBLE);
+                                        }else
+                                            layoutNoSearch.setVisibility(View.GONE);
                                         recyclerView.setAdapter(commentAdapter);
                                     }
                                     else{

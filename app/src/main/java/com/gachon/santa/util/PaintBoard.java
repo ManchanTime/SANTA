@@ -53,8 +53,13 @@ public class PaintBoard {
 
     public void loadPicture(String path) {
         clearPicture();
-        Bitmap bitmap = BitmapFactory.decodeFile(cacheDir + "/" + path + ".jpg").copy(Bitmap.Config.ARGB_8888, true);
-        myView.draw(bitmap);
+        if(BitmapFactory.decodeFile(cacheDir + "/" + path + ".jpg") != null){
+            Bitmap bitmap = BitmapFactory.decodeFile(cacheDir + "/" + path + ".jpg").copy(Bitmap.Config.ARGB_8888, true);
+            myView.draw(bitmap);
+        }
+        else{
+            Toast.makeText(myView.getContext(), "저장된 그림이 없습니다.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void savePicture(String path) {

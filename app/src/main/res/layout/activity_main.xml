@@ -77,15 +77,27 @@
                 android:textSize="50sp"
                 android:background="@drawable/border_read"/>
 
-            <Button
-                android:id="@+id/button_notification"
+            <RelativeLayout
+                android:id="@+id/layout_alarm"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:gravity="center"
-                android:text="알람"
-                android:textSize="50sp"
-                android:background="@drawable/border_read"/>
+                android:layout_columnWeight="1">
+                <Button
+                    android:id="@+id/button_notification"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="알람"
+                    android:textSize="50sp"
+                    android:background="@drawable/border_read"/>
+                <ImageView
+                    android:id="@+id/image_read"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentEnd="true"
+                    android:visibility="gone"
+                    android:src="@drawable/read"/>
+            </RelativeLayout>
 
             <Button
                 android:id="@+id/button_my_paint"

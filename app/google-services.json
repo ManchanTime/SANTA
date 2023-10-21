@@ -33,6 +33,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724864241436:android:8d523077c447cb147fb4d9",
+        "android_client_info": {
+          "package_name": "com.gachon.santa_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "724864241436-k16s68ar97atqk700q7ah1kktiesgc74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxombw-NGg-yV_DY4in5vOqXjcbjpG4SI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "724864241436-k16s68ar97atqk700q7ah1kktiesgc74.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

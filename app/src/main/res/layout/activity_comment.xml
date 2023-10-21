@@ -22,13 +22,38 @@
             tools:src="@drawable/santa_good" />
     </androidx.cardview.widget.CardView>
 
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/layout_comment"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </ScrollView>
+            android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </ScrollView>
+        <RelativeLayout
+            android:id="@+id/layout_no_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="20dp"
+                android:layout_above="@id/text_no"
+                android:src="@drawable/santa_search"/>
+            <TextView
+                android:id="@+id/text_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="30dp"
+                android:text="아직 댓글이 달리지 않았습니다!"/>
+        </RelativeLayout>
+    </RelativeLayout>
 </LinearLayout>
